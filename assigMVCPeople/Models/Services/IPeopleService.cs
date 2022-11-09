@@ -5,22 +5,20 @@ namespace assigMVCPeople.Models.Services
     public interface IPeopleService
     {
         //Create from viewmodel
-        People Create(CreatePeopleViewModel createPeople);
+        Person Create(CreatePersonViewModel createPerson);
 
         //The list over all people
-        List<People> GetAll();
+        List<Person> GetAll();
         //The list from cities
-        List<People> GetCities(string city);
+        List<Person> Search(string search);
 
         //Find by id
-        People FindById(int id);
-        //Find by city
-        People FindByCities(string city);
+        Person FindById(int id);
 
         //Update
-        void Edit(int id, CreatePeopleViewModel editPeople);
+        bool Edit(int id, CreatePersonViewModel editPerson);
         //Delete
-        void Remove(int id);
+        bool Remove(int id);
 
     }
 }
