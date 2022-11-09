@@ -4,16 +4,15 @@
     {
         //CRUD
         //CREATE
-        People Create(People people);
+        Person Create(Person person);
 
         //READ
-        List<People> GetAll();
-        People GetById(int id);
-        List<People> GetByName(string name);
-        List<People> GetByCities(string city);
+        List<Person> Read();
+        Person Read(int id);
+       
         //UPDATE
-        void Update(People people);
+        bool Update(Person person);
         //DELETE
-        void Delete(People people);
+        bool Delete(Person person);
     }
 }

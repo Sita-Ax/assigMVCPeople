@@ -14,37 +14,32 @@ namespace assigMVCPeople.Models.Services
             _peopleRepo = peopleRepo;
         }
 
-        public People Create(CreatePeopleViewModel createPeople)
+        public Person Create(CreatePersonViewModel createPerson)
         {
             throw new NotImplementedException();
         }
 
-        public void Edit(int id, CreatePeopleViewModel editPeople)
+        public Person FindById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public People FindByCities(string city)
+        public List<Person> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public People FindById(int id)
+        public List<Person> Search(string search)
         {
             throw new NotImplementedException();
         }
 
-        public List<People> GetAll()
+        bool IPeopleService.Edit(int id, CreatePersonViewModel editPerson)
         {
             throw new NotImplementedException();
         }
 
-        public List<People> GetCities(string city)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(int id)
+        bool IPeopleService.Remove(int id)
         {
             throw new NotImplementedException();
         }

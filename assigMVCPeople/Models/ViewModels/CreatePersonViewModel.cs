@@ -1,6 +1,6 @@
 ﻿namespace assigMVCPeople.Models.ViewModels
 {
-    public class CreatePeopleViewModel
+    public class CreatePersonViewModel
     {
         //What´s displayed
     }
