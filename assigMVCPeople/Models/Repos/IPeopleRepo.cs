@@ -7,6 +7,7 @@
         Person Create(Person person);
 
         //READ
+        List<Person> GetAll();
         List<Person> Read(string search);
         Person Read(int id);
        

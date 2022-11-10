@@ -12,6 +12,11 @@
             return person;
         }
 
+        public List<Person> GetAll()
+        {
+            return persons;
+        }
+
         public List<Person> Read(string search)
         {
             List<Person> personList = new List<Person>();
