@@ -7,7 +7,7 @@
         Person Create(Person person);
 
         //READ
-        List<Person> Read();
+        List<Person> Read(string search);
         Person Read(int id);
        
         //UPDATE
