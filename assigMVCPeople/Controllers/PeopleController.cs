@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using assigMVCPeople.Models.ViewModels;
 
 namespace assigMVCPeople.Controllers
 {
@@ -18,9 +19,10 @@ namespace assigMVCPeople.Controllers
         }
 
         // GET: PeopleController/Create
+        [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return View(new CreatePersonViewModel());
         }
 
         // POST: PeopleController/Create
