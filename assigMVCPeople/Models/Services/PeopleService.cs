@@ -16,32 +16,44 @@ namespace assigMVCPeople.Models.Services
 
         public Person Create(CreatePersonViewModel createPerson)
         {
+            //if (string.IsNullOrWhiteSpace(createPerson.Name) || string.IsNullOrWhiteSpace(createPerson.PhoneNumber) || string.IsNullOrWhiteSpace(createPerson.City)) ;
             throw new NotImplementedException();
         }
 
         public Person FindById(int id)
         {
-            throw new NotImplementedException();
+            return _peopleRepo.Read(id);
         }
 
         public List<Person> GetAll()
         {
-            throw new NotImplementedException();
+            return new List<Person>();
         }
 
         public List<Person> Search(string search)
         {
-            throw new NotImplementedException();
+            return _peopleRepo.Read(search);
         }
 
         bool IPeopleService.Edit(int id, CreatePersonViewModel editPerson)
         {
-            throw new NotImplementedException();
+           Person person = _peopleRepo.Read(id);
+            _peopleRepo.Update(person);
+            if(person != null)
+            {
+              return true;
+            }
+            return true;
         }
 
         bool IPeopleService.Remove(int id)
         {
-            throw new NotImplementedException();
+            Person person = _peopleRepo.Read(id);
+            if(person != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

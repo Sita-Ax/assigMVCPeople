@@ -8,7 +8,7 @@
             throw new NotImplementedException();
         }
 
-        public List<Person> Read()
+        public List<Person> Read(string search)
         {
             throw new NotImplementedException();
         }

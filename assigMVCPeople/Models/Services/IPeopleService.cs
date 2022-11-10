@@ -9,7 +9,7 @@ namespace assigMVCPeople.Models.Services
 
         //The list over all people
         List<Person> GetAll();
-        //The list from cities
+        
         List<Person> Search(string search);
 
         //Find by id
