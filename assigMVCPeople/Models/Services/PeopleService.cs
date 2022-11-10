@@ -16,8 +16,18 @@ namespace assigMVCPeople.Models.Services
 
         public Person Create(CreatePersonViewModel createPerson)
         {
-            //if (string.IsNullOrWhiteSpace(createPerson.Name) || string.IsNullOrWhiteSpace(createPerson.PhoneNumber) || string.IsNullOrWhiteSpace(createPerson.City)) ;
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(createPerson.Name) || string.IsNullOrWhiteSpace(createPerson.City))
+            {
+                throw new ArgumentException("Name, and city is not allowed white any space.");
+            }
+            Person person = new Person()
+            {
+                Name = createPerson.Name,
+                City = createPerson.City,
+                PhoneNumber = createPerson.PhoneNumber
+            };
+            person = _peopleRepo.Create(person);
+            return person;
         }
 
         public Person FindById(int id)
@@ -27,7 +37,7 @@ namespace assigMVCPeople.Models.Services
 
         public List<Person> GetAll()
         {
-            return new List<Person>();
+            return _peopleRepo.GetAll();
         }
 
         public List<Person> Search(string search)

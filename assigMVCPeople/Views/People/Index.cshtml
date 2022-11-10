@@ -13,11 +13,14 @@
 </div>
 @foreach (Person person in Model)
 {
+    if(person != null)
+    {
     <div class="row">
         <div class="col-3">@person.Name</div>
         <div class="col-3">@person.PhoneNumber</div>
         <div class="col-3">@person.City</div>
     </div>
+    }
 }
 
             
