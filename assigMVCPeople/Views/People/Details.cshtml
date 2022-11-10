@@ -1,0 +1,18 @@
+﻿@model assigMVCPeople.Models.ViewModels.CreatePersonViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<dl>
+    <dt>Name</dt>
+    <dd>@Model.Name</dd>
+
+    <dt>PhoneNumber</dt>
+    <dd>@Model.PhoneNumber</dd>
+
+    <dt>City</dt>
+    <dd>@Model.City</dd>
+</dl>
+<a asp-action="People">Go back to people</a>
