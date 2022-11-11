@@ -5,10 +5,10 @@
     });
 }
 
-function ajaxPost(actionUrl, inputId) {
-    let inputElement = $("#" + inputId);
+function ajaxPost(actionUrl, idName) {
+    let inputElement = $("#" + idName);
     var data = {
-        [inputElement.attr("name")]: inputElement.val()
+        [inputElement.attr("idName")]: inputElement.val()
     }
     $.post(actionUrl, data, function (response) {
         document.getElementById("result").innerHTML = response;
