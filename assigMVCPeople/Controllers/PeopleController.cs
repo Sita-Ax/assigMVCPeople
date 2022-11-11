@@ -16,14 +16,14 @@ namespace assigMVCPeople.Controllers
             _peopleService = new PeopleService(new InMemoryPeopleRepo());
         }
         // GET: PeopleController
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View(_peopleService.GetAll());
         }
 
         // GET: PeopleController/Create
         [HttpGet]
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View(new CreatePersonViewModel());
         }
@@ -31,7 +31,7 @@ namespace assigMVCPeople.Controllers
         // POST: PeopleController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreatePersonViewModel createPerson)
+        public IActionResult Create(CreatePersonViewModel createPerson)
         {
             if (ModelState.IsValid)
             {
@@ -50,7 +50,7 @@ namespace assigMVCPeople.Controllers
         }
 
         // GET: PeopleController/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Details(int id)
         {
             Person person = _peopleService.FindById(id);
             if(person == null)
@@ -61,7 +61,7 @@ namespace assigMVCPeople.Controllers
         }
 
         // GET: PeopleController/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Edit(int id)
         {
             return View();
         }
@@ -69,7 +69,7 @@ namespace assigMVCPeople.Controllers
         // POST: PeopleController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(int id, IFormCollection collection)
         {
             try
             {
@@ -82,15 +82,20 @@ namespace assigMVCPeople.Controllers
         }
 
         // GET: PeopleController/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
+            Person person = _peopleService.FindById(id);
+            if(person == null)
+            {
+                return NotFound();
+            }
             return View();
         }
 
         // POST: PeopleController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(int id, IFormCollection collection)
         {
             try
             {
@@ -102,13 +107,22 @@ namespace assigMVCPeople.Controllers
             }
         }
 
-        public ActionResult PartialViewPeople()
+        public IActionResult People(string search)
+        {
+            if(search != null)
+            {
+                return View(_peopleService.Search(search));
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult PartialViewPeople()
         {
             return PartialView("_PeopleList", _peopleService.GetAll());
         }
 
         [HttpPost]
-        public ActionResult PartialViewDetails(int id)
+        public IActionResult PartialViewDetails(int id)
         {
             Person person = _peopleService.FindById(id);
             if(person != null)
@@ -117,7 +131,7 @@ namespace assigMVCPeople.Controllers
             }
             return NotFound();
         }
-        public ActionResult AjaxDelete(int id)
+        public IActionResult AjaxDelete(int id)
         {
             Person person = _peopleService.FindById(id);
             if (_peopleService.Remove(id))

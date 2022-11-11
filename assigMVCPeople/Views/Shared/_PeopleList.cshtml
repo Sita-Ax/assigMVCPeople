@@ -4,9 +4,9 @@
     <div class="col-3">Person</div>
     <div class="col-3">Phonenumber</div>
     <div class="col-3">City</div>
-    
+    <div class="col-3">Id</div>
 </div>
 @foreach (Person person in Model)
 {
-    <partial name="_PersonRow" model="person"></partial>
+    <partial name="_PersonDetails" model="person"></partial>
 }
