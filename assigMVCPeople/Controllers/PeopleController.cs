@@ -101,5 +101,30 @@ namespace assigMVCPeople.Controllers
                 return View();
             }
         }
+
+        public ActionResult PartialViewPeople()
+        {
+            return PartialView("_PeopleList", _peopleService.GetAll());
+        }
+
+        [HttpPost]
+        public ActionResult PartialViewDetails(int id)
+        {
+            Person person = _peopleService.FindById(id);
+            if(person != null)
+            {
+                return PartialView("_PersonDetails", person);
+            }
+            return NotFound();
+        }
+        public ActionResult AjaxDelete(int id)
+        {
+            Person person = _peopleService.FindById(id);
+            if (_peopleService.Remove(id))
+            {
+                return PartialView("_PeopleList", _peopleService.GetAll());
+            }
+            return NotFound();
+        }
     }
 }
