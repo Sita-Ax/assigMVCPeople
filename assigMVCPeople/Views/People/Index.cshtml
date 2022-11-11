@@ -7,6 +7,7 @@
 
 <a class="btn btn-primary" id="create-btn" style="height:auto; justify-content: space-around;" asp-action="Create">Add a person to the list</a>
 
+
 <div class="input-group rounded">
     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
     <span class="input-group-text border-10" id="search-addon">
@@ -23,7 +24,7 @@
 {
     if(person != null)
     {
-    <div class="row">
+    <div class="row" style="margin: 5px;">
         <div class="col-3">@person.Name</div>
         <div class="col-3">@person.PhoneNumber</div>
         <div class="col-3">@person.City</div>
@@ -31,6 +32,11 @@
     </div>
     }
 }
+
+@*@foreach (Person person in Model)
+{
+    @Html.RadioButtonFor(p => p.SelectName, person.Id, (person.IsSelect.Value) ? new {@checked = "checked"} : null )@person.Name
+}*@
 
             
 
