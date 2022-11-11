@@ -16,3 +16,32 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#create-btn {
+    background-color:aquamarine;
+    padding: 4px 5px;
+}
+.input-group{
+    background-color: red;
+    margin: 1px;
+    width: 250px;
+    justify-content: space-between;
+}
+.fas fa-search{
+    font-size: 100px;
+    color: forestgreen;
+}
+
+.form-control{
+    background-color: yellow;
+}
+#search-addon {
+    background-color: aqua;
+}
+.btn btn-primary {
+    justify-content: space-around;
+}
+.btn btn-secondary {
+    border-bottom: 2px solid black;
+    justify-content: space-around;
+}
