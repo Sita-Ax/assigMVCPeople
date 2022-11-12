@@ -69,7 +69,7 @@ namespace assigMVCPeople.Controllers
         // POST: PeopleController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(int id, CreatePersonViewModel editPerson)
         {
             try
             {
@@ -85,17 +85,17 @@ namespace assigMVCPeople.Controllers
         public IActionResult Delete(int id)
         {
             Person person = _peopleService.FindById(id);
-            if(person == null)
+            if(person != null)
             {
-                return NotFound();
+                _peopleService.Remove(id);
             }
-            return View();
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: PeopleController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(int id, CreatePersonViewModel deletePerson)
         {
             try
             {
@@ -134,9 +134,12 @@ namespace assigMVCPeople.Controllers
         public IActionResult AjaxDelete(int id)
         {
             Person person = _peopleService.FindById(id);
-            if (_peopleService.Remove(id))
+            if (person != null)
             {
-                return PartialView("_PeopleList", _peopleService.GetAll());
+                if (_peopleService.Remove(id))
+                {
+                    return PartialView("_PeopleList", _peopleService.GetAll());
+                }
             }
             return NotFound();
         }

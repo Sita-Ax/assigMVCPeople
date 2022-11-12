@@ -5,16 +5,16 @@
 
 <h1>People with Ajax</h1>
 
-<button class="btn-light" onclick="getAjaxPeopleList('@Url.Action("PartialViewPeople","People")')">Get people in a list</button>
+<button class="btn btn-secondary" onclick="getAjaxPeopleList('@Url.Action("PartialViewPeople","People")')">Get people in a list</button>
 <div class="row"></div>
 <br />
 <div class="form-group col-sm-11">
-    <input class="form-control" type="text" name="Name" id="idName" placeholder="Person Name" />
+    <input class="form-control" type="number" name="id" id="idName" placeholder="Person id" />
 </div>
+<br/>
+<button class="btn btn-secondary" onclick="ajaxPost('@Url.Action("PartialViewDetails","People")', 'idName')">Detail of this person</button>
 
-<button class="btn-light" onclick="ajaxPost('@Url.Action("PartialViewDetails","People")', 'idName')">Detail of this person</button>
-
-<button class="btn-light" onclick="ajaxPost('@Url.Action("AjaxDelete","People")', 'idName')">Delete</button>
+<button class="btn btn-secondary" onclick="ajaxPost('@Url.Action("AjaxDelete","People")', 'idName')">Delete</button>
 <br />
 
 <div id="result"></div>

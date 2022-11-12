@@ -5,15 +5,16 @@
 
 <h1>Index</h1>
 
-<a class="btn btn-primary" id="create-btn" style="height:auto; justify-content: space-around;" asp-action="Create">Add a person to the list</a>
+<a class="btn btn-primary" id="create-btn" style="height:auto;" asp-action="Create">Add a person to the list</a>
+<br/>
+<br />
 
-
-<div class="input-group rounded">
+@*<div class="input-group rounded">
     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" asp-action="People(search)"/>
     <span class="input-group-text border-10" id="search-addon">
         <i class="fas fa-search"></i>
     </span>
-</div>
+</div>*@
 <div class="row">
     <div class="col-3">Name</div>
     <div class="col-3">PhoneNumber</div>
@@ -24,12 +25,12 @@
 {
     if(person != null)
     {
-    <div class="row" style="margin: 5px;">
+    <div class="row" style="margin: 2px;">
         <div class="col-3">@person.Name</div>
         <div class="col-3">@person.PhoneNumber</div>
         <div class="col-3">@person.City</div>
-        <button type="button" class="btn btn-secondary" style="width:auto; height:auto;">@Html.ActionLink("Details", "Details", "People", new {id = person.Id})</button>
-    </div>
+       <button type="button" class="btn btn-secondary">@Html.ActionLink("Details", "Details", "People", new {id = person.Id})</button>
+   </div>
     }
 }
 

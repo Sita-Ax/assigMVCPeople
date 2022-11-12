@@ -8,7 +8,7 @@
 function ajaxPost(actionUrl, idName) {
     let inputElement = $("#" + idName);
     var data = {
-        [inputElement.attr("idName")]: inputElement.val()
+        [inputElement.attr("name")]: inputElement.val()
     }
     $.post(actionUrl, data, function (response) {
         document.getElementById("result").innerHTML = response;
