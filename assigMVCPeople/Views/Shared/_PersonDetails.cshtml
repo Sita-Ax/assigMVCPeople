@@ -5,5 +5,5 @@
     <div class="col-3">@Model.PhoneNumber</div>
     <div class="col-3">@Model.City</div>
     <div class="col-3">@Model.Id</div>
-    <div>@Html.ActionLink("Details", "Details", "People", new {id = Model.Id})</div>
+    <a asp-action="Index">Go back to people list</a>
 </div>
