@@ -45,25 +45,25 @@ namespace assigMVCPeople.Models.Services
             return _peopleRepo.Read(search);
         }
 
-        bool IPeopleService.Edit(int id, CreatePersonViewModel editPerson)
+        public bool Edit(int id, CreatePersonViewModel editPerson)
         {
            Person person = _peopleRepo.Read(id);
             _peopleRepo.Update(person);
             if(person != null)
             {
-              return true;
+                person.Name = editPerson.Name;
+                person.City = editPerson.City;
+                person.PhoneNumber = editPerson.PhoneNumber;
             }
             return true;
         }
 
-        bool IPeopleService.Remove(int id)
+        public bool Remove(int id)
         {
             Person person = _peopleRepo.Read(id);
-            if(person != null)
-            {
-                return true;
-            }
-            return false;
+            bool success = _peopleRepo.Delete(person);
+            return success;
+            
         }
     }
 }

@@ -48,17 +48,12 @@
             return person;
         }
 
-        bool IPeopleRepo.Delete(Person person)
+        public bool Delete(Person person)
         {
-            if(person != null)
-            {
-                persons.Remove(person);
-                return true;
-            }
-            return false;
+            return persons.Remove(person);
         }
 
-        bool IPeopleRepo.Update(Person person)
+        public bool Update(Person person)
         {
             Person? personToUpdate = Read(person.Id);
             if(personToUpdate != null)
