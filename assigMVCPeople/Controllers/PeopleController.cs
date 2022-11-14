@@ -134,13 +134,12 @@ namespace assigMVCPeople.Controllers
         public IActionResult AjaxDelete(int id)
         {
             Person person = _peopleService.FindById(id);
-            if (person != null)
-            {
+            
                 if (_peopleService.Remove(id))
                 {
                     return PartialView("_PeopleList", _peopleService.GetAll());
                 }
-            }
+            
             return NotFound();
         }
     }
