@@ -54,6 +54,7 @@ namespace assigMVCPeople.Models.Services
                 person.Name = editPerson.Name;
                 person.City = editPerson.City;
                 person.PhoneNumber = editPerson.PhoneNumber;
+
             }
             return true;
         }
