@@ -97,28 +97,18 @@ namespace assigMVCPeople.Controllers
         public IActionResult Delete(int id)
         {
             Person person = _peopleService.FindById(id);
-            if(person != null)
-            {
-                _peopleService.Remove(id);
-            }
-            return RedirectToAction(nameof(Index));
-        }
-
-        // POST: PeopleController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, CreatePersonViewModel deletePerson)
-        {
-            try
+            if(person == null)
             {
                 return RedirectToAction(nameof(Index));
-            }
-            catch
+            }            
+            else
             {
-                return View();
-            }
-        }
+                 _peopleService.Remove(id);
 
+            }
+            return View();           
+        }
+                     
         public IActionResult People(string search)
         {
             if(search != null)
