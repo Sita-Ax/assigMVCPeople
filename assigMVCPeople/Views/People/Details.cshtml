@@ -15,4 +15,12 @@
     <dt>City</dt>
     <dd>@Model.City</dd>
 </dl>
-<a asp-action="Index">Go back to people</a>
+
+<a asp-action="People" class="btn btn-dark">Back to the list of people</a>
+<br />
+<a class="btn btn-primary mt-5" asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+
+<a asp-action="Edit" asp-controller="People" asp-route-id="@Model.Id" class="btn btn-warning mt-5">Edit</a>
+
+
+

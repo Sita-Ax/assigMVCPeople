@@ -23,16 +23,11 @@
 
 @foreach (Person person in Model)
 {
-    if(person != null)
-    {
-    <div class="row" style="margin: 2px;">
-        <div class="col-3">@person.Name</div>
-        <div class="col-3">@person.PhoneNumber</div>
-        <div class="col-3">@person.City</div>
-       <button type="button" class="btn btn-secondary">@Html.ActionLink("Details", "Details", "People", new {id = person.Id})</button>
-   </div>
+    if (person != null) { 
+        <partial name="_PeopleDisplay" model="person"></partial>
+
     }
-}
+ }
 
 @*@foreach (Person person in Model)
 {
