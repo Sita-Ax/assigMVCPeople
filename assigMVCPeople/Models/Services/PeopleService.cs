@@ -16,17 +16,12 @@ namespace assigMVCPeople.Models.Services
 
         public Person Create(CreatePersonViewModel createPerson)
         {
-            if (string.IsNullOrWhiteSpace(createPerson.Name) || string.IsNullOrWhiteSpace(createPerson.City))
+            Person person = _peopleRepo.Create(createPerson.Name, createPerson.PhoneNumber, createPerson.City);
+            if (string.IsNullOrWhiteSpace(createPerson.Name) || string.IsNullOrWhiteSpace(createPerson.PhoneNumber) || string.IsNullOrWhiteSpace(createPerson.City))
             {
-                throw new ArgumentException("Name, and city is not allowed white any space.");
+                throw new ArgumentException("Name,PhoneNumber, City is not allowed white any space.");
             }
-            Person person = new Person()
-            {
-                Name = createPerson.Name,
-                City = createPerson.City,
-                PhoneNumber = createPerson.PhoneNumber
-            };
-            person = _peopleRepo.Create(person);
+            
             return person;
         }
 
