@@ -4,16 +4,16 @@
     {
         //CRUD
         //CREATE
-        Person Create(string name, string phoneNumber, string city);
+        public Person Create(string name, string phoneNumber, string city);
 
         //READ
-        List<Person> GetAll();
-        List<Person> Read(string search);
-        Person Read(int id);
+        public List<Person> GetAll();
+        public List<Person> Read();
+        public Person Read(int id);
        
         //UPDATE
-        bool Update(Person person);
+        public bool Update(Person? person);
         //DELETE
-        bool Delete(Person person);
+        public bool Delete(Person? person);
     }
 }

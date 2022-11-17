@@ -25,25 +25,20 @@ namespace assigMVCPeople.Models.Services
             return person;
         }
 
-        public Person FindById(int id)
-        {
-            return _peopleRepo.Read(id);
-        }
-
         public List<Person> GetAll()
         {
-            return _peopleRepo.GetAll();
+            return _peopleRepo.Read();
         }
 
-        public List<Person> Search(string search)
+        public Person FindById(int id)
         {
-            return _peopleRepo.Read(search);
+            Person findPerson = _peopleRepo.Read(id);
+            return findPerson;
         }
 
         public bool Edit(int id, CreatePersonViewModel editPerson)
         {
-           Person person = _peopleRepo.Read(id);
-            _peopleRepo.Update(person);
+           Person person = FindById(id);
             if(person != null)
             {
                 person.Name = editPerson.Name;
@@ -51,7 +46,7 @@ namespace assigMVCPeople.Models.Services
                 person.PhoneNumber = editPerson.PhoneNumber;
 
             }
-            return true;
+            return _peopleRepo.Update(person);
         }
 
         public bool Remove(int id)
@@ -61,5 +56,25 @@ namespace assigMVCPeople.Models.Services
             return success;
             
         }
+
+        public List<Person> Search(string search)
+        {
+            List<Person> searchPerson = _peopleRepo.Read();
+            foreach (Person person in _peopleRepo.Read())
+            {
+                if (person.Name.Contains(search, StringComparison.OrdinalIgnoreCase) ||
+                    person.City.Contains(search, StringComparison.OrdinalIgnoreCase))
+                {
+                    searchPerson = searchPerson.Where(p => p.Name.ToUpper().Contains(search.ToUpper()) || p.City.Contains(search.ToUpper())).ToList();
+                    searchPerson.Add(person);
+                }
+            }
+            if (searchPerson.Count == 0)
+            {
+                throw new ArgumentException("Could not find, try another");
+            }
+            return searchPerson;
+        }
+
     }
 }

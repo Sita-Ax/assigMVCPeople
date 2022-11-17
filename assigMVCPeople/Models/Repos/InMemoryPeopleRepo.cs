@@ -21,52 +21,43 @@
             return persons;
         }
 
-        public List<Person> Read(string search)
+        public List<Person> Read()
         {
-            List<Person> personList = new List<Person>();
-            if(!string.IsNullOrEmpty(search))
-            {
-                persons = new List<Person>();
-            }
-            foreach(Person aPerson in persons)
-            {
-                if(aPerson.Name == search)
-                {
-                    personList.Add(aPerson);
-                }
-            }
-            return personList;
+            return persons;
         }
 
-        public Person? Read(int id)
+        public Person Read(int id)
         {
-            Person? person = null;
             foreach(Person aPerson in persons)
             {
                 if(aPerson.Id == id)
                 {
-                    person = aPerson;
-                    break;
+                   return aPerson;
                 }
             }
-            return person;
-        }
-
-        public bool Delete(Person person)
-        {
-            return persons.Remove(person);
+            return null;
         }
 
         public bool Update(Person person)
         {
             Person? personToUpdate = Read(person.Id);
-            if(personToUpdate != null)
+            if (personToUpdate == null)
             {
+                return false;
+            }
+            else 
+            { 
                 personToUpdate.Name = person.Name;
                 personToUpdate.PhoneNumber = person.PhoneNumber;
                 personToUpdate.City = person.City;
+                return true;
             }
-            return true;
+           
         }
+        public bool Delete(Person person)
+        {
+            return persons.Remove(person);
+        }
+
     }
 }

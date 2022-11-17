@@ -6,7 +6,7 @@
 <h1>People page</h1>
 
 <a class="btn btn-primary" id="create-btn" style="height:auto;" asp-action="Create">Add a person to the list</a>
-<br/>
+<br />
 <br />
 
 @*<div class="input-group rounded">
@@ -23,9 +23,9 @@
 
 @foreach (Person person in Model)
 {
-    if (person != null) { 
+    if (person != null)
+    {
         <partial name="_PeopleDisplay" model="person"></partial>
-
     }
  }
 
@@ -33,6 +33,3 @@
 {
     @Html.RadioButtonFor(p => p.SelectName, person.Id, (person.IsSelect.Value) ? new {@checked = "checked"} : null )@person.Name
 }*@
-
-            
-
