@@ -4,7 +4,7 @@
     {
         //CRUD
         //CREATE
-        Person Create(Person person);
+        Person Create(string name, string phoneNumber, string city);
 
         //READ
         List<Person> GetAll();

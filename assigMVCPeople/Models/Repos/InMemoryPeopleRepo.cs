@@ -5,9 +5,13 @@
         //Save every people and give them an id
         static int idCounter = 0;
         static List<Person> persons = new List<Person>();
-        public Person Create(Person person)
+        public Person Create(string name,string phoneNumber, string city)
         {
+            Person person = new Person(name, phoneNumber, city);
             person.Id = ++idCounter;
+            person.Name = name;
+            person.PhoneNumber = phoneNumber;
+            person.City = city;
             persons.Add(person);
             return person;
         }

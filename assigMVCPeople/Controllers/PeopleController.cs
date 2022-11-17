@@ -4,6 +4,7 @@ using assigMVCPeople.Models.ViewModels;
 using assigMVCPeople.Models.Services;
 using assigMVCPeople.Models.Repos;
 using assigMVCPeople.Models;
+using System;
 
 namespace assigMVCPeople.Controllers
 {
@@ -41,7 +42,7 @@ namespace assigMVCPeople.Controllers
                 }
                 catch (ArgumentException ex)
                 {
-                    ModelState.AddModelError("Person", ex.Message);
+                    ModelState.AddModelError("Name, PhoneNumber & City", ex.Message);
                     return View(createPerson);
                 }
                 return RedirectToAction(nameof(Index));
@@ -63,7 +64,19 @@ namespace assigMVCPeople.Controllers
         // GET: PeopleController/Edit/5
         public IActionResult Edit(int id)
         {
-            return View();
+            Person person = _peopleService.FindById(id);
+            if (person == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            CreatePersonViewModel editPerson = new CreatePersonViewModel()
+            {
+                Name = person.Name,
+                PhoneNumber = person.PhoneNumber,
+                City = person.City,
+            };
+            return View(editPerson);
         }
 
         // POST: PeopleController/Edit/5
@@ -71,14 +84,13 @@ namespace assigMVCPeople.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, CreatePersonViewModel editPerson)
         {
-            try
+            if (ModelState.IsValid)
             {
+                _peopleService.Edit(id, editPerson);
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            _peopleService.Create(editPerson);
+            return View(editPerson);
         }
 
         // GET: PeopleController/Delete/5
