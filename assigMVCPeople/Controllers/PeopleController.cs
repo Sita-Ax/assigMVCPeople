@@ -108,14 +108,22 @@ namespace assigMVCPeople.Controllers
             }
             return View();           
         }
-                     
-        public IActionResult People(string search)
+
+        [HttpGet]
+        public IActionResult Search()
         {
+            return View(new PeopleViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult Search(string search)
+        {
+            List<Person> persons = _peopleService.Search(search);
             if(search != null)
             {
-                return View(_peopleService.Search(search));
+                return PartialView("_PeopleList", persons);
             }
-            return RedirectToAction(nameof(Index));
+            return BadRequest();
         }
 
         public IActionResult PartialViewPeople()
