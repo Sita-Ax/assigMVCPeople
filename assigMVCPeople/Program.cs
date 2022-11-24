@@ -1,4 +1,14 @@
+using assigMVCPeople.Models.Repos;
+using assigMVCPeople.Models.Services;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddDbContext<PeopleDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IPeopleRepo, DbPeopleRepo>();
+builder.Services.AddScoped<IPeopleService, PeopleService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
