@@ -4,24 +4,14 @@
 }
 
 <br/>
-<fieldset>
-    <legend>Select what you want to search for: </legend>
-    <input type="radio" name="searchName" id="isActive" onchange="verifyAnswer()" ? new {@checked="checked" } : null>
-    <label for="search-name">Name</label>
-     <input type="radio" name="serachCity" id="isActive" onchange="verifyAnswer()" ? new {@checked = "checked"} : null>
-    <label for="search-city">City</label>
-</fieldset>
-
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Search" method="post">
-            <div class="form-group">
-                <input class="form-control" type="text" name="search" id="inputSerach" placeholder="Search for name or city" />
-                <button onclick="postSearch('@Url.Action("Search", "People")', 'inputSearch')">Search</button>
-            </div>
+        <form asp-action="Search">
+            <p>Filter: <input type="text" name="search" placeholder="Serach"><input type="submit" value="FilterString" /></p>
         </form>
     </div>
 </div>
+
 <div id="result"></div>
 
    @* @Html.RadioButtonFor(p => p.Name, person.Id, (person.IsSelect.Value) ? new {@checked = "checked"} : null )*@
