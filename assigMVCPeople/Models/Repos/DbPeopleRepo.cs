@@ -1,38 +1,48 @@
-﻿namespace assigMVCPeople.Models.Repos
+﻿using assigMVCPeople.Models.DB;
+
+namespace assigMVCPeople.Models.Repos
 {
     public class DbPeopleRepo : IPeopleRepo
     {
-        public DbPeopleRepo()
+        readonly PeopleDbContext _peopleDbContext;
+        public DbPeopleRepo(PeopleDbContext peopleDbContext)
         {
-
+            _peopleDbContext = peopleDbContext;
         }
         public Person Create(string name, string phoneNumber, string city)
         {
-            throw new NotImplementedException();
+            Person person = new Person(name, phoneNumber, city);
+            _peopleDbContext.Add(person);
+            _peopleDbContext.SaveChanges();
+            return person;
         }
 
         public List<Person> GetAll()
         {
-            throw new NotImplementedException();
+            return _peopleDbContext.Peoples.ToList();
         }
 
         public List<Person> Read()
         {
-            throw new NotImplementedException();
+            return _peopleDbContext.Peoples.ToList();
         }
 
         public Person Read(int id)
         {
-            throw new NotImplementedException();
+            return _peopleDbContext.Peoples.SingleOrDefault(person => person.Id == id);
         }
 
         public bool Update(Person? person)
         {
-            throw new NotImplementedException();
+            _peopleDbContext.Update(person);
+            _peopleDbContext.SaveChanges();
+            return true;
         }
         public bool Delete(Person? person)
         {
-            throw new NotImplementedException();
+            _peopleDbContext.Remove(person);
+            _peopleDbContext.SaveChanges();
+            return true;
         }
     }
 }

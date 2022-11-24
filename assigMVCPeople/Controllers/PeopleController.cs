@@ -12,9 +12,9 @@ namespace assigMVCPeople.Controllers
     {
         IPeopleService _peopleService;
 
-        public PeopleController()
+        public PeopleController(IPeopleService peopleService)
         {
-            _peopleService = new PeopleService(new InMemoryPeopleRepo());
+            _peopleService = peopleService;
         }
         // GET: PeopleController
         public IActionResult Index()
