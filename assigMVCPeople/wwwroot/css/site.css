@@ -27,10 +27,7 @@ body {
     width: 250px;
     justify-content: space-between;
 }
-.fas fa-search{
-    font-size: 100px;
-    color: forestgreen;
-}
+
 
 .form-control{
     background-color: yellow;
