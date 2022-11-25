@@ -1,4 +1,6 @@
 ﻿using assigMVCPeople.Models.DB;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace assigMVCPeople.Models.Repos
 {
@@ -9,22 +11,17 @@ namespace assigMVCPeople.Models.Repos
         {
             _peopleDbContext = peopleDbContext;
         }
-        public Person Create(string name, string phoneNumber, string city)
+        public Person Create(string name, string phoneNumber)
         {
-            Person person = new Person(name, phoneNumber, city);
+            Person person = new Person(name, phoneNumber);
             _peopleDbContext.Add(person);
             _peopleDbContext.SaveChanges();
             return person;
         }
 
-        public List<Person> GetAll()
-        {
-            return _peopleDbContext.Peoples.ToList();
-        }
-
         public List<Person> Read()
         {
-            return _peopleDbContext.Peoples.ToList();
+            return _peopleDbContext.Peoples.Include(person => person.City).ToList();
         }
 
         public Person Read(int id)
@@ -35,13 +32,15 @@ namespace assigMVCPeople.Models.Repos
         public bool Update(Person? person)
         {
             _peopleDbContext.Update(person);
-            _peopleDbContext.SaveChanges();
+            int result = _peopleDbContext.SaveChanges();
+            if (result == 0) { return false; }
             return true;
         }
         public bool Delete(Person? person)
         {
             _peopleDbContext.Remove(person);
-            _peopleDbContext.SaveChanges();
+            int result = _peopleDbContext.SaveChanges();
+            if (result == 0) { return false; }
             return true;
         }
     }

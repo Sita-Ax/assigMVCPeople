@@ -4,10 +4,9 @@
     {
         //CRUD
         //CREATE
-        Person Create(string name, string phoneNumber, string city);
+        Person Create(string name, string phoneNumber);
 
         //READ
-        List<Person> GetAll();
         List<Person> Read();
         public Person Read(int id);
        

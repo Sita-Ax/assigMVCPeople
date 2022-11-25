@@ -16,8 +16,8 @@ namespace assigMVCPeople.Models.Services
 
         public Person Create(CreatePersonViewModel createPerson)
         {
-            Person person = _peopleRepo.Create(createPerson.Name, createPerson.PhoneNumber, createPerson.City);
-            if (string.IsNullOrWhiteSpace(createPerson.Name) || string.IsNullOrWhiteSpace(createPerson.PhoneNumber) || string.IsNullOrWhiteSpace(createPerson.City))
+            Person person = _peopleRepo.Create(createPerson.Name, createPerson.PhoneNumber);
+            if (string.IsNullOrWhiteSpace(createPerson.Name) || string.IsNullOrWhiteSpace(createPerson.PhoneNumber))
             {
                 throw new ArgumentException("Name,PhoneNumber, City is not allowed white any space.");
             }
@@ -42,9 +42,7 @@ namespace assigMVCPeople.Models.Services
             if(person != null)
             {
                 person.Name = editPerson.Name;
-                person.City = editPerson.City;
                 person.PhoneNumber = editPerson.PhoneNumber;
-
             }
             return _peopleRepo.Update(person);
         }
@@ -62,10 +60,9 @@ namespace assigMVCPeople.Models.Services
             List<Person> searchPerson = _peopleRepo.Read();
             foreach (Person person in _peopleRepo.Read())
             {
-                if (person.Name.Contains(search, StringComparison.OrdinalIgnoreCase) ||
-                    person.City.Contains(search, StringComparison.OrdinalIgnoreCase))
+                if (person.Name.Contains(search, StringComparison.OrdinalIgnoreCase))
                 {
-                    searchPerson = searchPerson.Where(p => p.Name.ToUpper().Contains(search.ToUpper()) || p.City.Contains(search.ToUpper())).ToList();
+                    searchPerson = searchPerson.Where(p => p.Name.ToUpper().Contains(search.ToUpper())).ToList();
                     searchPerson.Add(person);
                 }
             }

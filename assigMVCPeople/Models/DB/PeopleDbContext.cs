@@ -14,7 +14,7 @@ namespace assigMVCPeople.Models.DB
         {
             get; set;
         }
-        public DbSet<assigMVCPeople.Models.Country> Country { get; set; }
-        public DbSet<assigMVCPeople.Models.ViewModels.CreateCountryViewModel> CreateCountryViewModel { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        //public DbSet<CreateCountryViewModel> CreateCountryViewModel { get; set; }
     }
 }

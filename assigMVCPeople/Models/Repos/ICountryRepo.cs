@@ -7,7 +7,6 @@
         Country Create(string countryName, string internationalCallingCode);
 
         //READ
-        List<Country> GetAll();
         List<Country> Read();
         public Country Read(int id);
 

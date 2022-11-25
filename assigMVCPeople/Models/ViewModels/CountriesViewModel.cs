@@ -7,8 +7,8 @@ namespace assigMVCPeople.Models.ViewModels
     {
         [Display(Name = "CountriesListView")]
         public List<Country> CountriesListView { get; set; }
-        [Display(Name = "FilterString")]
-        public string? FilterString { get; set; }
+        [Display(Name = "CountriesString")]
+        public string? CountriesString { get; set; }
         public CountriesViewModel()
         {
             CountriesListView = new List<Country>();
