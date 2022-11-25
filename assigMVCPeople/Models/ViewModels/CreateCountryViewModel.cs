@@ -5,16 +5,14 @@ namespace assigMVCPeople.Models.ViewModels
 {
     public class CreateCountryViewModel
     {
-        [Key]
-        [Display(Name = "CountryName")]
+        
+        [Display(Name = "Name of Country")]
         [Required]
         public string? CountryName { get; set; }
         [Display(Name = "InternationalCallingCode")]
         [Required]
         public string? InternationalCallingCode { get; set; }
-        public List<City> CityList
-        {
-            get; set;
-        }
+        public List<City> Cities { get; set; }
+        public CreateCountryViewModel() { Cities = new List<City>(); }
     }
 }

@@ -5,7 +5,7 @@ namespace assigMVCPeople.Models.ViewModels
     public class CreatePersonViewModel
     {
         //What´s displayed
-        [Display(Name="Name")]
+        [Display(Name="First and last name")]
         [Required]
          public string?  Name { get; set; }
         [Display(Name = "PhoneNumber")]
@@ -13,33 +13,9 @@ namespace assigMVCPeople.Models.ViewModels
          public string? PhoneNumber { get; set; }
         [Display(Name ="City")]
         [Required]
-        public string? City { get; set; }
+        public int CityId { get; set; }
 
-        public List<string> CityList
-        {
-            get
-            {
-                return new List<string>
-                {
-                    "Karlskrona",
-                    "Kirunna",
-                    "Boden",
-                    "Borås",
-                    "Gävle",
-                    "Umeå",
-                    "Lund",
-                    "Jönköping",
-                    "Norrköping",
-                    "Helsinhgborg",
-                    "Linkköping",
-                    "Växiö",
-                    "Västerås"
-
-                };
-                                
-            }
-
-        }
+        public List<City>? Cities { get; set; }
         
     }
 }

@@ -74,7 +74,6 @@ namespace assigMVCPeople.Controllers
             {
                 Name = person.Name,
                 PhoneNumber = person.PhoneNumber,
-                City = person.City,
             };
             return View(editPerson);
         }
