@@ -1,4 +1,4 @@
-﻿@model IEnumerable<assigMVCPeople.Models.City>
+﻿@model assigMVCPeople.Models.ViewModels.CreateCityViewModels
 
 @{
     ViewData["Title"] = "Create";
@@ -9,7 +9,39 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<h4>CreateCityViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CityName" class="control-label"></label>
+                <input asp-for="CityName" class="form-control" />
+                <span asp-validation-for="CityName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <select asp-for="CountryId">
+                @foreach (Country country in Model.Countries)
+                {
+                    <option value="@country.CountryId">@country.CountryName</option>
+                }
+            </select>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -22,20 +54,10 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZipCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CityName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CityId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CityId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CityId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+*@
+        @* <td>
+        <a asp-action="Edit" asp-route-id="@item.CityId">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.CityId">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.CityId">Delete</a>
+        </td>*@
+

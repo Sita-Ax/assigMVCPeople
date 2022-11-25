@@ -8,10 +8,12 @@ namespace assigMVCPeople.Controllers
     public class CityController : Controller
     {
         ICityService _cityService;
+        private readonly ICountryService _countryService;
 
-        public CityController(ICityService cityService)
+        public CityController(ICityService cityService, ICountryService countryService)
         {
             _cityService = cityService;
+            _countryService = countryService;
         }
         public IActionResult Index()
         {
@@ -19,7 +21,9 @@ namespace assigMVCPeople.Controllers
         }
         public IActionResult Create()
         {
-            return View(new CreateCityViewModels());
+            CreateCityViewModels createCityView = new CreateCityViewModels();
+            createCityView.Countries = _countryService.GetAll();
+            return View(createCityView);
         }
 
         [HttpPost]

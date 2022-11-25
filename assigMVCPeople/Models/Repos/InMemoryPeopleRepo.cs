@@ -43,7 +43,6 @@
             { 
                 personToUpdate.Name = person.Name;
                 personToUpdate.PhoneNumber = person.PhoneNumber;
-                personToUpdate.City = person.City;
                 return true;
             }
            

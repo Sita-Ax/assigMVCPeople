@@ -8,6 +8,7 @@ namespace assigMVCPeople.Models
         //primary key foringkey
         [Key]
         public int CountryId { get; set; }
+        public List<City> Cities { get; set; }
         public string? CountryName { get; set; }
         public string? InternationalCallingCode { get; set; }
 
@@ -17,7 +18,6 @@ namespace assigMVCPeople.Models
             InternationalCallingCode = internationalCallingCode;
         }
 
-        public List<City> Cities { get; set; }
         public Country()
         {
 

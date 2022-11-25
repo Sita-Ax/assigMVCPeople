@@ -14,12 +14,10 @@ namespace assigMVCPeople.Models.ViewModels
         [Required]
         public string? ZipCode { get; set; }
 
-        public List<Person> PeopleList
-
-        {
-            get; set;
-
-        }
+        public List<Person> Peoples { get; set; }
+        public int CountryId { get; set; }
+        public List<Country> Countries { get; set; }
+        public CreateCityViewModels() { Countries = new List<Country>(); }
 
     }
 }

@@ -5,7 +5,7 @@ namespace assigMVCPeople.Models.Services
 {
     public class CountryService : ICountryService
     {
-        private readonly ICountryRepo _countryRepo;
+        ICountryRepo _countryRepo;
 
         public CountryService(ICountryRepo countryRepo)
         {

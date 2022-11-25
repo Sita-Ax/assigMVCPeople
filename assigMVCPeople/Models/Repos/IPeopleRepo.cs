@@ -11,8 +11,8 @@
         public Person Read(int id);
        
         //UPDATE
-        bool Update(Person? person);
+        bool Update(Person person);
         //DELETE
-        bool Delete(Person? person);
+        bool Delete(Person person);
     }
 }

@@ -6,7 +6,7 @@ namespace assigMVCPeople.Models.ViewModels
     public class CreateCountryViewModel
     {
         
-        [Display(Name = "Name of Country")]
+        [Display(Name = "Country")]
         [Required]
         public string? CountryName { get; set; }
         [Display(Name = "InternationalCallingCode")]

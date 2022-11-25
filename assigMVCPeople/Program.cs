@@ -11,6 +11,9 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 builder.Services.AddScoped<IPeopleRepo, DbPeopleRepo>();
 builder.Services.AddScoped<IPeopleService, PeopleService>();
 
+builder.Services.AddScoped<ICountryRepo, DbCountryRepo>();
+builder.Services.AddScoped<ICountryService, CountryService>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddMvc();

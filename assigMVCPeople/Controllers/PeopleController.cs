@@ -11,11 +11,13 @@ namespace assigMVCPeople.Controllers
     public class PeopleController : Controller
     {
         IPeopleService _peopleService;
-
-        public PeopleController(IPeopleService peopleService)
+        private readonly ICityService _cityService;
+        public PeopleController(IPeopleService peopleService, ICityService cityService)
         {
             _peopleService = peopleService;
+            _cityService = cityService;
         }
+
         // GET: PeopleController
         public IActionResult Index()
         {
@@ -26,7 +28,9 @@ namespace assigMVCPeople.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreatePersonViewModel());
+            CreatePersonViewModel createPersonViewModel = new CreatePersonViewModel();
+            createPersonViewModel.Cities = _cityService.GetAll();
+            return View(createPersonViewModel);
         }
 
         // POST: PeopleController/Create
@@ -69,11 +73,11 @@ namespace assigMVCPeople.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-
             CreatePersonViewModel editPerson = new CreatePersonViewModel()
             {
                 Name = person.Name,
                 PhoneNumber = person.PhoneNumber,
+                CityId = person.Id,
             };
             return View(editPerson);
         }
