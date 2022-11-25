@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using assigMVCPeople.Models;
+using assigMVCPeople.Models.ViewModels;
 
 namespace assigMVCPeople.Models.DB
 {
@@ -12,5 +14,7 @@ namespace assigMVCPeople.Models.DB
         {
             get; set;
         }
+        public DbSet<assigMVCPeople.Models.Country> Country { get; set; }
+        public DbSet<assigMVCPeople.Models.ViewModels.CreateCountryViewModel> CreateCountryViewModel { get; set; }
     }
 }
