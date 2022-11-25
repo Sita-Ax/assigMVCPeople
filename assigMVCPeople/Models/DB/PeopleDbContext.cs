@@ -16,5 +16,6 @@ namespace assigMVCPeople.Models.DB
         }
         public DbSet<assigMVCPeople.Models.Country> Country { get; set; }
         public DbSet<assigMVCPeople.Models.ViewModels.CreateCountryViewModel> CreateCountryViewModel { get; set; }
+        public DbSet<assigMVCPeople.Models.City> City { get; set; }
     }
 }
