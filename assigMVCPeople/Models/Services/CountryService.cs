@@ -24,7 +24,7 @@ namespace assigMVCPeople.Models.Services
 
         public List<Country> GetAll()
         {
-            return _countryRepo.GetAll();
+            return _countryRepo.Read();
         }
 
         public Country FindById(int id)
