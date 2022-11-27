@@ -22,7 +22,7 @@ namespace assigMVCPeople.Models
         [Required]
         public string? CityName { get; set; }
         //Navigation Property
-        public List<Person> Persons { get; set; }
+        public List<Person> Peoples { get; set; }
         //PeopleDbContext
         [ForeignKey("Country")]
         public int CountryId { get; set; }

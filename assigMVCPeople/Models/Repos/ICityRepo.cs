@@ -5,7 +5,7 @@
         City Create(string cityName, string zipCode);
 
         //READ
-        List<City> GetAll();
+        
         List<City> Read();
         public City Read(int id);
 
