@@ -8,7 +8,7 @@
 
         //READ
         List<Country> Read();
-        public Country Read(int id);
+        Country Read(int id);
 
         //UPDATE
         bool Update(Country? country);

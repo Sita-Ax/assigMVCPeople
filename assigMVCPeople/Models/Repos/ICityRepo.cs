@@ -7,7 +7,7 @@
         //READ
         
         List<City> Read();
-        public City Read(int id);
+        City Read(int id);
 
         //UPDATE
         bool Update(City? city);

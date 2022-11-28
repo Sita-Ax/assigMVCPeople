@@ -1,14 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace assigMVCPeople.Models
 {
     public class Country
     {
-        //primary key foringkey
+        //primary key to set the foringkey in city
         [Key]
         public int CountryId { get; set; }
-        public List<City> Cities { get; set; }
         public string? CountryName { get; set; }
         public string? InternationalCallingCode { get; set; }
 
@@ -17,10 +19,11 @@ namespace assigMVCPeople.Models
             CountryName = countryName;
             InternationalCallingCode = internationalCallingCode;
         }
-
         public Country()
         {
 
         }
+        //Have navigations propoties anly the list of cities
+        public List<City>? Cities { get; set; }
     }
 }

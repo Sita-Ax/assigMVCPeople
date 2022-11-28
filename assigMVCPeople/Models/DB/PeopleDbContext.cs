@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using assigMVCPeople.Models;
 using assigMVCPeople.Models.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace assigMVCPeople.Models.DB
 {
@@ -10,8 +13,8 @@ namespace assigMVCPeople.Models.DB
         {
 
         }
-        public DbSet<Person> Peoples { get; set; }
-        public DbSet<City> Cities { get; set; }
-        public DbSet<Country> Countries { get; set; }
+        public DbSet<Person>? Peoples { get; set; }
+        public DbSet<City>? Cities { get; set; }
+        public DbSet<Country>? Countries { get; set; }
     }
 }

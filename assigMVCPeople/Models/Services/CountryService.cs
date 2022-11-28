@@ -14,11 +14,11 @@ namespace assigMVCPeople.Models.Services
 
         public Country Create(CreateCountryViewModel createCountry)
         {
-            Country country = _countryRepo.Create(createCountry.CountryName, createCountry.InternationalCallingCode);
             if(string.IsNullOrWhiteSpace(createCountry.CountryName) || string.IsNullOrWhiteSpace(createCountry.InternationalCallingCode))
                 {
                 throw new ArgumentException("CountryName and InternationalCallingCode is not allowed wíth space.");
             }
+            Country country = _countryRepo.Create(createCountry.CountryName, createCountry.InternationalCallingCode);
             return country;
         }
 

@@ -1,12 +1,12 @@
 ﻿using assigMVCPeople.Models.DB;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.Metrics;
+using System;
 
 namespace assigMVCPeople.Models.Repos
 {
     public class DbCityRepo : ICityRepo
     {
-        private readonly PeopleDbContext _peopleDbContext;
+        readonly PeopleDbContext _peopleDbContext;
         public DbCityRepo(PeopleDbContext peopleDbContext)
         {
             _peopleDbContext = peopleDbContext;

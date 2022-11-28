@@ -17,12 +17,11 @@ namespace assigMVCPeople.Models.Services
 
         public City Create(CreateCityViewModels createCity)
         {
-            City city = _cityRepo.Create(createCity.CityName, createCity.ZipCode);
             if (string.IsNullOrWhiteSpace(createCity.CityName)||(string.IsNullOrWhiteSpace(createCity.ZipCode)))
             {
                 throw new ArgumentException("City is not allowed white any space.");
             }
-
+            City city = _cityRepo.Create(createCity.CityName, createCity.ZipCode);
             return city;
         }
 
@@ -63,9 +62,7 @@ namespace assigMVCPeople.Models.Services
             List<City> searchCity = _cityRepo.Read();
             foreach (City city in _cityRepo.Read())
             {
-                if (
-
-                    city.CityName.Contains(search, StringComparison.OrdinalIgnoreCase))
+                if (city.CityName.Contains(search, StringComparison.OrdinalIgnoreCase))
                 {
                     searchCity = searchCity.Where(p => p.CityName.Contains(search.ToUpper())).ToList();
                     searchCity.Add(city);

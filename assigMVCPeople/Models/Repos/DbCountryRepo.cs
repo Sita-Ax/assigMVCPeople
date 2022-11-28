@@ -6,7 +6,7 @@ namespace assigMVCPeople.Models.Repos
 {
     public class DbCountryRepo : ICountryRepo
     {
-        private readonly PeopleDbContext _peopleDbContext;
+        readonly PeopleDbContext _peopleDbContext;
 
         public DbCountryRepo(PeopleDbContext peopleDbContext)
         {
