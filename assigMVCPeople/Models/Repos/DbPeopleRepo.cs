@@ -1,5 +1,7 @@
 ﻿using assigMVCPeople.Models.DB;
 using Microsoft.EntityFrameworkCore;
+using assigMVCPeople.Models.Repos;
+using assigMVCPeople.Models;
 using System.Linq;
 using System;
 
@@ -22,7 +24,7 @@ namespace assigMVCPeople.Models.Repos
 
         public List<Person> Read()
         {
-            return _peopleDbContext.Peoples.Include(person => person.City).ThenInclude(person = person.Country).ToList();
+            return _peopleDbContext.Peoples.Include(person => person.City).ToList();
         }
 
         public Person Read(int id)

@@ -8,7 +8,7 @@ namespace assigMVCPeople.Models.Services
         //Create from viewmodel
         City Create(CreateCityViewModels createCity);
 
-        //The list over all people
+        //The list over all city
         List<City> GetAll();
 
         List<City> Search(string search);

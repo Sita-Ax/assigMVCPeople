@@ -7,7 +7,7 @@ namespace assigMVCPeople.Models.Services
         //Create from viewmodel
         Country Create(CreateCountryViewModel createCountry);
 
-        //The list over all people
+        //The list over all country
         List<Country> GetAll();
 
         List<Country> Search(string search);

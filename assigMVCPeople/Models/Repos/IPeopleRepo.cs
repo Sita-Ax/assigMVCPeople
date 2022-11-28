@@ -8,7 +8,7 @@
 
         //READ
         List<Person> Read();
-        public Person Read(int id);
+        Person Read(int id);
        
         //UPDATE
         bool Update(Person person);

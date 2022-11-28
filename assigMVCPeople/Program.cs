@@ -14,6 +14,9 @@ builder.Services.AddScoped<IPeopleService, PeopleService>();
 builder.Services.AddScoped<ICountryRepo, DbCountryRepo>();
 builder.Services.AddScoped<ICountryService, CountryService>();
 
+builder.Services.AddScoped<ICityRepo, DbCityRepo>();
+builder.Services.AddScoped<ICityService, CityService>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddMvc();

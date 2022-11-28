@@ -11,7 +11,7 @@ namespace assigMVCPeople.Controllers
     public class PeopleController : Controller
     {
         IPeopleService _peopleService;
-        private readonly ICityService _cityService;
+        readonly ICityService _cityService;
         public PeopleController(IPeopleService peopleService, ICityService cityService)
         {
             _peopleService = peopleService;
