@@ -1,41 +1,42 @@
-﻿@model IEnumerable<assigMVCPeople.Models.City>
+﻿@model List<City>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>List City</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New City</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ZipCode)
+                City
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CityName)
+                ZipCode
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (City city in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ZipCode)
+                    @city.CityName
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CityName)
+                    @city.ZipCode
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CityId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CityId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CityId">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@city.CityId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@city.CityId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@city.CityId">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<a asp-action="Index" asp-controller="People">Create a person</a>

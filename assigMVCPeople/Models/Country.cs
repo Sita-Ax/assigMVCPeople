@@ -23,7 +23,7 @@ namespace assigMVCPeople.Models
         {
 
         }
-        //Have navigations propoties anly the list of cities
+        //Have navigations propoties only the list of cities
         public List<City>? Cities { get; set; }
     }
 }

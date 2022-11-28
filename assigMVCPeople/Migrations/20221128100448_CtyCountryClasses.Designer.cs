@@ -11,8 +11,8 @@ using assigMVCPeople.Models.DB;
 namespace assigMVCPeople.Migrations
 {
     [DbContext(typeof(PeopleDbContext))]
-    [Migration("20221128092906_CityCountryClasses")]
-    partial class CityCountryClasses
+    [Migration("20221128100448_CtyCountryClasses")]
+    partial class CtyCountryClasses
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

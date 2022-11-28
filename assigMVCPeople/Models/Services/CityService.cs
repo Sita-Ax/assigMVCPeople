@@ -6,7 +6,7 @@ namespace assigMVCPeople.Models.Services
 {
     public class CityService : ICityService
     {
-        //Get the mathods that the interface have as contract. 
+        //Get the methods that the interface have as contract. 
         ICityRepo _cityRepo;
 
         //Use constructor to get access from the repos
@@ -19,7 +19,7 @@ namespace assigMVCPeople.Models.Services
         {
             if (string.IsNullOrWhiteSpace(createCity.CityName)||(string.IsNullOrWhiteSpace(createCity.ZipCode)))
             {
-                throw new ArgumentException("City is not allowed white any space.");
+                throw new ArgumentException("CityName and ZipCode is not allowed white any space.");
             }
             City city = _cityRepo.Create(createCity.CityName, createCity.ZipCode);
             return city;

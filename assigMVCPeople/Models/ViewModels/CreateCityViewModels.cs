@@ -6,7 +6,7 @@ namespace assigMVCPeople.Models.ViewModels
 {
     public class CreateCityViewModels
     {
-        [Key]
+       // [Key]
         [Display(Name = "CityName")]
         [Required]
         public string? CityName { get; set; }
@@ -14,7 +14,7 @@ namespace assigMVCPeople.Models.ViewModels
         [Required]
         public string? ZipCode { get; set; }
 
-        public List<Person> Peoples { get; set; }
+        public List<Person> People { get; set; }
         public int CountryId { get; set; }
         public List<Country> Countries { get; set; }
         public CreateCityViewModels() { Countries = new List<Country>(); }
