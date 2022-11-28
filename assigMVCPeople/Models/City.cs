@@ -27,7 +27,7 @@ namespace assigMVCPeople.Models
         //Navigation Property of list of person
         public List<Person>? Peoples { get; set; }
         //PeopleDbContext ForeignKay from country
-        [ForeignKey("Country")]
+        //[ForeignKey("Country")]
         public int CountryId { get; set; }
         public Country? Country { get; set; }
        
