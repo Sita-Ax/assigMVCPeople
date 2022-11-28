@@ -13,7 +13,7 @@ namespace assigMVCPeople.Models.DB
         {
 
         }
-        public DbSet<Person>? Peoples { get; set; }
+        public DbSet<Person>? People { get; set; }
         public DbSet<City>? Cities { get; set; }
         public DbSet<Country>? Countries { get; set; }
     }

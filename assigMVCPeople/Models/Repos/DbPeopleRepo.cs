@@ -24,12 +24,12 @@ namespace assigMVCPeople.Models.Repos
 
         public List<Person> Read()
         {
-            return _peopleDbContext.Peoples.Include(person => person.City).ToList();
+            return _peopleDbContext.People.Include(person => person.City).ThenInclude(person => person.Country).ToList();
         }
 
         public Person Read(int id)
         {
-            return _peopleDbContext.Peoples.SingleOrDefault(person => person.Id == id);
+            return _peopleDbContext.People.SingleOrDefault(person => person.Id == id);
         }
 
         public bool Update(Person person)
