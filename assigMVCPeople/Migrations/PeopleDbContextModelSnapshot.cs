@@ -103,7 +103,7 @@ namespace assigMVCPeople.Migrations
             modelBuilder.Entity("assigMVCPeople.Models.Person", b =>
                 {
                     b.HasOne("assigMVCPeople.Models.City", "City")
-                        .WithMany("Peoples")
+                        .WithMany("People")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -113,7 +113,7 @@ namespace assigMVCPeople.Migrations
 
             modelBuilder.Entity("assigMVCPeople.Models.City", b =>
                 {
-                    b.Navigation("Peoples");
+                    b.Navigation("People");
                 });
 
             modelBuilder.Entity("assigMVCPeople.Models.Country", b =>
