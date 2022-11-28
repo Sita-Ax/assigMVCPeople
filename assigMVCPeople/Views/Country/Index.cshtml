@@ -15,27 +15,29 @@
             <th>
                 Country
             </th>
+            <th>
+                InternationalCallingCode
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (Country country in Model) {
-        <tr>
-            <td>
-                @country.CountryId
-            </td>
+        @foreach (Country country in Model)
+        {
+            <tr>
                 <td>
                     @country.CountryName
                 </td>
                 <td>
                     @country.InternationalCallingCode
                 </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@country.CountryId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@country.CountryId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@country.CountryId">Delete</a>
-            </td>
-        </tr>
-}
+                <td>
+                    <a asp-action="Edit" asp-route-id="@country.CountryId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@country.CountryId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@country.CountryId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<a asp-action="Index" asp-controller="City">Create a city</a>

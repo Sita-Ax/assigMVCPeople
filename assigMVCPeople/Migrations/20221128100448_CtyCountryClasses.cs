@@ -4,7 +4,7 @@
 
 namespace assigMVCPeople.Migrations
 {
-    public partial class CityCountryClasses : Migration
+    public partial class CtyCountryClasses : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
