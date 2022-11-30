@@ -12,36 +12,35 @@ namespace assigMVCPeople.Models.Repos
             _peopleDbContext = peopleDbContext;
         }
 
-        public City Create(string cityName, string zipCode)
+        public City Create(City city)
         {
-            City city = new City(cityName, zipCode);
-            _peopleDbContext.Add(city);
+           // City city = new City(cityName, zipCode);
+            _peopleDbContext.Cities.Add(city);
             _peopleDbContext.SaveChanges();
             return city;
         }
-
-        public bool Delete(City? city)
+        
+        public List<City> Read()
         {
-            _peopleDbContext.Cities.Remove(city);
+            return _peopleDbContext.Cities!.Include(city => city.Country).ToList();
+        }
+
+        public City Read(int id)
+        {
+            return _peopleDbContext.Cities!.Include(city => city.Country).SingleOrDefault(city => city.CityId ==id);
+        }
+
+        public bool Update(City city)
+        {
+            _peopleDbContext.Cities!.Update(city);
             int result = _peopleDbContext.SaveChanges();
             if (result == 0) { return false; }
             return true;
         }
 
-        
-        public List<City> Read()
+        public bool Delete(City city)
         {
-            return _peopleDbContext.Cities.Include(city => city.Country).ToList();
-        }
-
-        public City Read(int id)
-        {
-            return _peopleDbContext.Cities.Include(city => city.Country).SingleOrDefault(city => city.CountryId ==id);
-        }
-
-        public bool Update(City? city)
-        {
-            _peopleDbContext.Cities.Update(city);
+            _peopleDbContext.Cities!.Remove(city);
             int result = _peopleDbContext.SaveChanges();
             if (result == 0) { return false; }
             return true;

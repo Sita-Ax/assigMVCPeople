@@ -1,14 +1,10 @@
-﻿@model assigMVCPeople.Models.ViewModels.CreateCityViewModels
-
+﻿@model CreateCityViewModel
 @{
     ViewData["Title"] = "Create";
 }
 
 <h1>Create</h1>
 
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
 <h4>CreateCityViewModel</h4>
 <hr />
 <div class="row">
@@ -41,23 +37,3 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-@*<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ZipCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CityName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-*@
-        @* <td>
-        <a asp-action="Edit" asp-route-id="@item.CityId">Edit</a> |
-        <a asp-action="Details" asp-route-id="@item.CityId">Details</a> |
-        <a asp-action="Delete" asp-route-id="@item.CityId">Delete</a>
-        </td>*@
-

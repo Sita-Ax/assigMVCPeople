@@ -31,9 +31,9 @@
                     @city.ZipCode
             </td>
             <td>
-                    <a asp-action="Edit" asp-route-id="@city.CityId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@city.CityId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@city.CityId">Delete</a>
+                    <a asp-action="Edit" asp-controller="City" asp-route-id="@city.CityId">Edit</a> |
+                    <a asp-action="Details" asp-controller="City" asp-route-id="@city.CityId">Details</a> |
+                    <a asp-action="Delete" asp-controller="City" asp-route-id="@city.CityId">Delete</a>
             </td>
         </tr>
 }

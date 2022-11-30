@@ -6,9 +6,9 @@ namespace assigMVCPeople.Models.ViewModels
 {
     public class CityViewModels
     {
-        [Display(Name = "CitiesListView")]
+       // [Display(Name = "CitiesListView")]
         public List<City> CitiesListView { get; set; }
-        [Display(Name = "FilterString")]
+       // [Display(Name = "FilterString")]
         public string? FilterString { get; set; }
 
         public CityViewModels()

@@ -7,8 +7,8 @@ namespace assigMVCPeople.Controllers
 {
     public class CityController : Controller
     {
-        ICityService _cityService;
-        private readonly ICountryService _countryService;
+        private ICityService _cityService;
+        private ICountryService _countryService;
 
         public CityController(ICityService cityService, ICountryService countryService)
         {
@@ -19,28 +19,21 @@ namespace assigMVCPeople.Controllers
         {
             return View(_cityService.GetAll());
         }
+
+        [HttpGet]
         public IActionResult Create()
         {
-            CreateCityViewModels createCityView = new CreateCityViewModels();
+            CreateCityViewModel createCityView = new CreateCityViewModel();
             createCityView.Countries = _countryService.GetAll();
             return View(createCityView);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(CreateCityViewModels createCity)
+        public IActionResult Create(CreateCityViewModel createCity)
         {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _cityService.Create(createCity);
-                }
-                catch (ArgumentException ex)
-                {
-                    ModelState.AddModelError("CityName, Zipcode", ex.Message);
-                    return View(createCity);
-                }
+                _cityService.Create(createCity);
                 return RedirectToAction(nameof(Index));
             }
             return View(createCity);
@@ -64,7 +57,7 @@ namespace assigMVCPeople.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            CreateCityViewModels editCity = new CreateCityViewModels()
+            CreateCityViewModel editCity = new CreateCityViewModel()
             {
                 CityName = city.CityName,
                 ZipCode = city.ZipCode,
@@ -74,7 +67,7 @@ namespace assigMVCPeople.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, CreateCityViewModels editCity)
+        public IActionResult Edit(int id, CreateCityViewModel editCity)
         {
             if (ModelState.IsValid)
             {
@@ -88,14 +81,13 @@ namespace assigMVCPeople.Controllers
         public IActionResult Delete(int id)
         {
             City city = _cityService.FindById(id);
-            if (city == null)
+            if (city== null)
             {
                 return RedirectToAction(nameof(Index));
             }
             else
             {
                 _cityService.Remove(id);
-
             }
             return View();
         }

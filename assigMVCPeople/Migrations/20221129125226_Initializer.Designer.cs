@@ -11,8 +11,8 @@ using assigMVCPeople.Models.DB;
 namespace assigMVCPeople.Migrations
 {
     [DbContext(typeof(PeopleDbContext))]
-    [Migration("20221128135752_CityCountryClasses")]
-    partial class CityCountryClasses
+    [Migration("20221129125226_Initializer")]
+    partial class Initializer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

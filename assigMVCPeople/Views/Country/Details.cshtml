@@ -13,18 +13,20 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CountryName)
         </dt>
-        <dd class = "col-sm-10">
+      
+        <dd class = "col-sm-12">
             @Html.DisplayFor(model => model.CountryName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.InternationalCallingCode)
         </dt>
-        <dd class = "col-sm-10">
+       
+        <dd class = "col-sm-12">
             @Html.DisplayFor(model => model.InternationalCallingCode)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.CountryId">Edit</a> |
+ @*   <a asp-action="Edit" asp-route-id="@Model?.CountryId">Edit</a> |*@
     <a asp-action="Index">Back to List</a>
 </div>

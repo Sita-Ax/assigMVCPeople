@@ -18,8 +18,7 @@ namespace assigMVCPeople.Models.Services
                 {
                 throw new ArgumentException("CountryName and InternationalCallingCode is not allowed wíth space.");
             }
-            Country country = _countryRepo.Create(createCountry.CountryName, createCountry.InternationalCallingCode);
-            return country;
+            return _countryRepo.Create(new Country(createCountry.CountryName, createCountry.InternationalCallingCode));
         }
 
         public List<Country> GetAll()

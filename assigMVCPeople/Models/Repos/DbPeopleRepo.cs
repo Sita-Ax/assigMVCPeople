@@ -14,17 +14,18 @@ namespace assigMVCPeople.Models.Repos
         {
             _peopleDbContext = peopleDbContext;
         }
-        public Person Create(string name, string phoneNumber)
+        public Person Create(Person person)
         {
-            Person person = new Person(name, phoneNumber);
-            _peopleDbContext.Add(person);
+            //Person person = new Person(name, phoneNumber);
+            _peopleDbContext.People.Add(person);
             _peopleDbContext.SaveChanges();
             return person;
         }
 
         public List<Person> Read()
         {
-            return _peopleDbContext.People.Include(person => person.City).ThenInclude(person => person.Country).ToList();
+          //  if (_peopleDbContext.People == null) throw new Exception();
+            return _peopleDbContext.People!.Include(person => person.City).ToList();
         }
 
         public Person Read(int id)
@@ -41,7 +42,7 @@ namespace assigMVCPeople.Models.Repos
         }
         public bool Delete(Person person)
         {
-            _peopleDbContext.Remove(person);
+            _peopleDbContext.People!.Remove(person);
             int result = _peopleDbContext.SaveChanges();
             if (result == 0) { return false; }
             return true;

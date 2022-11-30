@@ -4,7 +4,7 @@
     {
         //CRUD
         //CREATE
-        Person Create(string name, string phoneNumber);
+        Person Create(Person peson);
 
         //READ
         List<Person> Read();

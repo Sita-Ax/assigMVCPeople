@@ -2,7 +2,7 @@
 {
     public interface ICityRepo
     {
-        City Create(string cityName, string zipCode);
+        City Create(City city);
 
         //READ
         
@@ -10,7 +10,7 @@
         City Read(int id);
 
         //UPDATE
-        bool Update(City? city);
+        bool Update(City city);
         //DELETE
         bool Delete(City? city);
     }

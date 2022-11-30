@@ -6,7 +6,7 @@ namespace assigMVCPeople.Models.Services
     public interface ICityService
     {
         //Create from viewmodel
-        City Create(CreateCityViewModels createCity);
+        City Create(CreateCityViewModel createCity);
 
         //The list over all city
         List<City> GetAll();
@@ -17,7 +17,7 @@ namespace assigMVCPeople.Models.Services
         City FindById(int id);
 
         //Update
-        bool Edit(int id, CreateCityViewModels editCity);
+        bool Edit(int id, CreateCityViewModel editCity);
         //Delete
         bool Remove(int id);
 

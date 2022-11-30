@@ -36,7 +36,7 @@ namespace assigMVCPeople.Controllers
                 }
                 catch (ArgumentException ex)
                 {
-                    ModelState.AddModelError("CountryName, InternationalCallingCode & City", ex.Message);
+                    ModelState.AddModelError("CountryName, InternationalCallingCode", ex.Message);
                     return View(createCountry);
                 }
                 return RedirectToAction(nameof(Index));

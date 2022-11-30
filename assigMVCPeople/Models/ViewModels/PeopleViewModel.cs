@@ -4,9 +4,9 @@ namespace assigMVCPeople.Models.ViewModels
 {
     public class PeopleViewModel
     {
-        [Display(Name = "PeopleListView")]
+       // [Display(Name = "PeopleListView")]
         public List<Person> PeopleListView { get; set; }
-        [Display(Name = "FilterString")]
+       // [Display(Name = "FilterString")]
         public string? FilterString { get; set; }
 
         public PeopleViewModel()

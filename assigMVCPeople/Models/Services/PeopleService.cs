@@ -7,11 +7,12 @@ namespace assigMVCPeople.Models.Services
     {
         //Get the mathods that the interface have as contract. 
         IPeopleRepo _peopleRepo;
-
+        private readonly ICityRepo _cityRepo;
         //Use constructor to get access from the repos
-        public PeopleService(IPeopleRepo peopleRepo)
+        public PeopleService(IPeopleRepo peopleRepo, ICityRepo cityRepo)
         {
             _peopleRepo = peopleRepo;
+            _cityRepo = cityRepo;
         }
 
         public Person Create(CreatePersonViewModel createPerson)
@@ -20,15 +21,19 @@ namespace assigMVCPeople.Models.Services
             {
                 throw new ArgumentException("Name, PhoneNumber is not allowed white any space.");
             }
+
+            var city = _cityRepo.Read(createPerson.CityId);
+            if(city == null)
+            {
+                throw new ArgumentException("City is empty, plizz choose your city.");
+            }
             Person person = new Person()
             {
                 Name = createPerson.Name,
                 PhoneNumber = createPerson.PhoneNumber,
-                CityId = createPerson.CityId
+                City = city
             };
-            _peopleRepo.Create(person.Name, person.PhoneNumber);
-            return person;
-
+            return _peopleRepo.Create(person);
         }
 
         public List<Person> GetAll()

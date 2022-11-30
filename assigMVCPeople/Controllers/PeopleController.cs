@@ -40,15 +40,15 @@ namespace assigMVCPeople.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
-                {
+                //try
+                //{
                     _peopleService.Create(createPerson);
-                }
-                catch (ArgumentException ex)
-                {
-                    ModelState.AddModelError("Name, PhoneNumber & City", ex.Message);
-                    return View(createPerson);
-                }
+                //}
+                //catch (ArgumentException ex)
+                //{
+                //    ModelState.AddModelError("Name, PhoneNumber & City", ex.Message);
+                //    return View(createPerson);
+                //}
                 return RedirectToAction(nameof(Index));
             }
             return View(createPerson);

@@ -5,9 +5,9 @@ namespace assigMVCPeople.Models.ViewModels
 {
     public class CountriesViewModel
     {
-        [Display(Name = "CountriesListView")]
+       // [Display(Name = "CountriesListView")]
         public List<Country> CountriesListView { get; set; }
-        [Display(Name = "CountriesString")]
+       // [Display(Name = "CountriesString")]
         public string? CountriesString { get; set; }
         public CountriesViewModel()
         {
