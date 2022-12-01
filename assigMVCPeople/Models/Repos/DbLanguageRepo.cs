@@ -1,4 +1,5 @@
 ﻿using assigMVCPeople.Models.DB;
+using Microsoft.EntityFrameworkCore;
 
 namespace assigMVCPeople.Models.Repos
 {
@@ -12,31 +13,30 @@ namespace assigMVCPeople.Models.Repos
 
         public Language Create(Language language)
         {
-            // City city = new City(cityName, zipCode);
-            _peopleDbContext.Cities.Add(Language);
+            _peopleDbContext.Languages.Add(language);
             _peopleDbContext.SaveChanges();
-            return Language;
+            return language;
         }
 
         public List<Language> Read()
         {
-            return _peopleDbContext.Languages!.Include(Language => Languag.People).ToList();
+            return _peopleDbContext.Languages!.Include(language => language.People).ToList();
         }
 
         public Language Read(int id)
         {
-            return _peopleDbContext.Languages!.Include(Language => Language.People).SingleOrDefault(leanguag => Language.languageId == id);
+            return _peopleDbContext.Languages!.Include(language => language.People).SingleOrDefault(language => language.LanguageId == id);
         }
 
-        public bool Update(Language Language)
+        public bool Update(Language language)
         {
-            _peopleDbContext.Languages!.Update(Language);
+            _peopleDbContext.Languages!.Update(language);
             int result = _peopleDbContext.SaveChanges();
             if (result == 0) { return false; }
             return true;
         }
 
-        public bool Delete(Language Language)
+        public bool Delete(Language language)
         {
             _peopleDbContext.Languages!.Remove(language);
             int result = _peopleDbContext.SaveChanges();
