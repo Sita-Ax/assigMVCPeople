@@ -1,0 +1,38 @@
+﻿@model List<Language>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<h1>Language List</h1>
+
+<p>
+    <a asp-action="Create">Create New Language</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Language
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Language language in Model)
+        {
+            <tr>
+                <td>
+                    @language.LanguageName
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@language.LanguageId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@language.LanguageId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@language.LanguageId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index" asp-controller="City">Create a city</a>
