@@ -7,6 +7,7 @@ namespace assigMVCPeople.Models.ViewModels
         [Display(Name = "LanguageName")]
         [Required]
         public string LanguageName { get; set; }
+        public int LanguageId { get; set; }
         public List<Person>? People { get; set; }
 
         public CreateLanguageViewModel()

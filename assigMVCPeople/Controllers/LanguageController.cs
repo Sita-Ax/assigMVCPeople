@@ -20,10 +20,11 @@ namespace assigMVCPeople.Controllers
         public IActionResult Create()
         {
             CreateLanguageViewModel createLanguageView = new CreateLanguageViewModel();
-            createLanguageView.People = _languageService.GetAll();
+
             return View(createLanguageView);
         }
         [HttpPost]
+        [AutoValidateAntiforgeryToken]
         public IActionResult Create(CreateLanguageViewModel createLanguage)
         {
             if (ModelState.IsValid)
@@ -71,14 +72,11 @@ namespace assigMVCPeople.Controllers
 
         public IActionResult Delete(int id)
         {
-            City city = _languageService.FindById(id);
-            if (city == null)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            else
+            Language language = _languageService.FindById(id);
+            if (language != null)
             {
                 _languageService.Remove(id);
+                return RedirectToAction(nameof(Index));
             }
             return View();
         }
@@ -94,10 +92,10 @@ namespace assigMVCPeople.Controllers
             List<Language> languages = _languageService.Search(search);
             if (search != null)
             {
-                return PartialView("_LanguageList", language);
+                return PartialView("_LanguageList", languages);
             }
             return BadRequest();
         }
     }
 }
-}
+

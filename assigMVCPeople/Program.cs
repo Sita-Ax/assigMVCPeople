@@ -17,6 +17,8 @@ builder.Services.AddScoped<ICountryService, CountryService>();
 builder.Services.AddScoped<ICityRepo, DbCityRepo>();
 builder.Services.AddScoped<ICityService, CityService>();
 
+builder.Services.AddScoped<ILanguageRepo, DbLanguageRepo>();
+builder.Services.AddScoped<ILanguageService, LanguageService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddMvc();
