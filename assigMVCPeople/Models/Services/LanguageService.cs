@@ -7,11 +7,9 @@ namespace assigMVCPeople.Models.Services
     public class LanguageService : ILanguageService
     {
         ILanguageRepo _languageRepo;
-        private readonly IPeopleRepo _peopleRepo;
-        public LanguageService(ILanguageRepo languageRepo, IPeopleRepo peopleRepo)
+        public LanguageService(ILanguageRepo languageRepo)
         {
             _languageRepo = languageRepo;
-            _peopleRepo = peopleRepo;
         }
 
         public Language Create(CreateLanguageViewModel createLanguage)
@@ -21,16 +19,9 @@ namespace assigMVCPeople.Models.Services
                 throw new ArgumentNullException("LanguageName need an input");
             }
 
-            var person = _peopleRepo.Read(createLanguage.Id);
-            if(person == null)
-            {
-                throw new ArgumentException("Person need to have a value");
-            }
-
             Language language = new Language()
             {
                 LanguageName = createLanguage.LanguageName,
-               // Person = person
             };
             return _languageRepo.Create(language);
         }

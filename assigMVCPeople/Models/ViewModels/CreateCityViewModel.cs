@@ -14,7 +14,7 @@ namespace assigMVCPeople.Models.ViewModels
         [Required]
         public string? ZipCode { get; set; }
 
-        public List<Person>? PeopleList { get; set; }
+        public List<Person>? People { get; set; }
         public int CountryId { get; set; }
         public List<Country> Countries { get; set; }
         public CreateCityViewModel() { Countries = new List<Country>(); }

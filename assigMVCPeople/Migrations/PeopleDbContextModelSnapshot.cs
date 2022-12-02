@@ -65,6 +65,23 @@ namespace assigMVCPeople.Migrations
                     b.ToTable("Countries");
                 });
 
+            modelBuilder.Entity("assigMVCPeople.Models.Language", b =>
+                {
+                    b.Property<int>("LanguageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LanguageId"), 1L, 1);
+
+                    b.Property<string>("LanguageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LanguageId");
+
+                    b.ToTable("Languages");
+                });
+
             modelBuilder.Entity("assigMVCPeople.Models.Person", b =>
                 {
                     b.Property<int>("Id")
@@ -89,6 +106,21 @@ namespace assigMVCPeople.Migrations
                     b.ToTable("People");
                 });
 
+            modelBuilder.Entity("LanguagePerson", b =>
+                {
+                    b.Property<int>("LanguagesLanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PeopleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LanguagesLanguageId", "PeopleId");
+
+                    b.HasIndex("PeopleId");
+
+                    b.ToTable("LanguagePerson");
+                });
+
             modelBuilder.Entity("assigMVCPeople.Models.City", b =>
                 {
                     b.HasOne("assigMVCPeople.Models.Country", "Country")
@@ -109,6 +141,21 @@ namespace assigMVCPeople.Migrations
                         .IsRequired();
 
                     b.Navigation("City");
+                });
+
+            modelBuilder.Entity("LanguagePerson", b =>
+                {
+                    b.HasOne("assigMVCPeople.Models.Language", null)
+                        .WithMany()
+                        .HasForeignKey("LanguagesLanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("assigMVCPeople.Models.Person", null)
+                        .WithMany()
+                        .HasForeignKey("PeopleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("assigMVCPeople.Models.City", b =>
