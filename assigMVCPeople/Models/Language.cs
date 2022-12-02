@@ -17,5 +17,6 @@ namespace assigMVCPeople.Models
             
             LanguageName = languageName;    
         }
+        public List<Person>? People { get; set; }
     }
 }
