@@ -13,7 +13,8 @@ namespace assigMVCPeople.Models.Repos
 
         public Language Create(Language language)
         {
-            _peopleDbContext.Languages.Add(language);
+            // City city = new City(cityName, zipCode);
+            _peopleDbContext.Languages.Add(Language);
             _peopleDbContext.SaveChanges();
             return language;
         }
