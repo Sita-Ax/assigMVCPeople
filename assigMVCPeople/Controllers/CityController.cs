@@ -7,8 +7,8 @@ namespace assigMVCPeople.Controllers
 {
     public class CityController : Controller
     {
-        private ICityService _cityService;
-        private ICountryService _countryService;
+        private readonly ICityService _cityService;
+        private readonly ICountryService _countryService;
 
         public CityController(ICityService cityService, ICountryService countryService)
         {
@@ -97,15 +97,15 @@ namespace assigMVCPeople.Controllers
             return View(new CityViewModels());
         }
 
-        [HttpPost]
-        public IActionResult Search(string search)
-        {
-            List<City> city = _cityService.Search(search);
-            if (search != null)
-            {
-                return PartialView("_CityList", city);
-            }
-            return BadRequest();
-        }
+        //[HttpPost]
+        //public IActionResult Search(string search)
+        //{
+        //    List<City> city = _cityService.Search(search);
+        //    if (search != null)
+        //    {
+        //        return PartialView("_CityList", city);
+        //    }
+        //    return BadRequest();
+        //}
     }
 }

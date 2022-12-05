@@ -8,13 +8,15 @@ namespace assigMVCPeople.Models.Services
         //Get the mathods that the interface have as contract. 
         IPeopleRepo _peopleRepo;
         private readonly ICityRepo _cityRepo;
+        private readonly ICountryRepo _countryRepo;
         private ILanguageRepo _languageRepo;
         //Use constructor to get access from the repos
-        public PeopleService(IPeopleRepo peopleRepo, ICityRepo cityRepo, ILanguageRepo languageRepo)
+        public PeopleService(IPeopleRepo peopleRepo, ICityRepo cityRepo, ILanguageRepo languageRepo, ICountryRepo countryRepo)
         {
             _peopleRepo = peopleRepo;
             _cityRepo = cityRepo;
             _languageRepo = languageRepo;
+            _countryRepo = countryRepo;
         }
 
         public Person Create(CreatePersonViewModel createPerson)
@@ -30,15 +32,21 @@ namespace assigMVCPeople.Models.Services
                 throw new ArgumentException("City is empty, plizz choose your city.");
             }
             var language = _languageRepo.Read(createPerson.LanguageId);
-            if(language == null)
+            if (language == null)
             {
                 throw new ArgumentException("Language is empty, can´t you speak?");
+            }
+            List<Language> languages = _languageRepo.Read();
+            foreach (Language languagess in languages ?? new List<Language>())
+            {
+                Language l = _languageRepo.Read(createPerson.LanguageId);
             }
             Person person = new Person()
             {
                 Name = createPerson.Name,
                 PhoneNumber = createPerson.PhoneNumber,
                 City = city,
+                Languages = languages,
             };
             return _peopleRepo.Create(person);
         }

@@ -1,4 +1,11 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Language>
+
+<h2>Language list</h2>
+
+<div class="row">
+    <div class="col-12">LanguageName</div>
+</div>
+@foreach (Language language in Model)
+{
+    <partial name="_LanguageList" model="language"></partial>
+}

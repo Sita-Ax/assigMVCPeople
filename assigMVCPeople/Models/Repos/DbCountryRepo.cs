@@ -15,7 +15,7 @@ namespace assigMVCPeople.Models.Repos
         public Country Create(Country country)
         {
             //Country country = new Country(countryName, internationalCallingCode);
-            _peopleDbContext.Countries.Add(country);
+            _peopleDbContext.Countries!.Add(country);
             _peopleDbContext.SaveChanges();
             return country;
         }

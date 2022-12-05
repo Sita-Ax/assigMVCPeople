@@ -17,7 +17,7 @@ namespace assigMVCPeople.Models.Repos
         public Person Create(Person person)
         {
             //Person person = new Person(name, phoneNumber);
-            _peopleDbContext.People.Add(person);
+            _peopleDbContext.People!.Add(person);
             _peopleDbContext.SaveChanges();
             return person;
         }
@@ -25,12 +25,12 @@ namespace assigMVCPeople.Models.Repos
         public List<Person> Read()
         {
           //  if (_peopleDbContext.People == null) throw new Exception();
-            return _peopleDbContext.People!.Include(person => person.City).ToList();
+            return _peopleDbContext.People!.Include(person => person.City).Include(person => person.Language).ToList();
         }
 
         public Person Read(int id)
         {
-            return _peopleDbContext.People.SingleOrDefault(person => person.Id == id);
+            return _peopleDbContext.People.Include(person => person.CityId).Include(person => person.LanguageId).SingleOrDefault(person => person.Id == id);
         }
 
         public bool Update(Person person)
