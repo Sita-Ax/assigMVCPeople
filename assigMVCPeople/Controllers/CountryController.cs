@@ -103,15 +103,15 @@ namespace assigMVCPeople.Controllers
             return View(new CountriesViewModel());
         }
 
-        [HttpPost]
-        public IActionResult Search(string search)
-        {
-            List<Country> countries = _countryService.Search(search);
-            if (search != null)
-            {
-                return PartialView("_CountryList", countries);
-            }
-            return BadRequest();
-        }
+        //[HttpPost]
+        //public IActionResult Search(string search)
+        //{
+        //    List<Country> countries = _countryService.Search(search);
+        //    if (search != null)
+        //    {
+        //        return PartialView("_CountryList", countries);
+        //    }
+        //    return BadRequest();
+        //}
     }
 }

@@ -14,19 +14,19 @@ namespace assigMVCPeople.Models.Repos
         public Language Create(Language language)
         {
             // City city = new City(cityName, zipCode);
-            _peopleDbContext.Languages.Add(language);
+            _peopleDbContext.Languages!.Add(language);
             _peopleDbContext.SaveChanges();
             return language;
         }
 
         public List<Language> Read()
         {
-            return _peopleDbContext.Languages!.Include(language => language.People).ToList();
+            return _peopleDbContext.Languages!.Include(language => language.LanguageId).ToList();
         }
 
         public Language Read(int id)
         {
-            return _peopleDbContext.Languages!.Include(language => language.People).SingleOrDefault(language => language.LanguageId == id);
+            return _peopleDbContext.Languages!.SingleOrDefault(language => language.LanguageId == id);
         }
 
         public bool Update(Language language)

@@ -14,7 +14,7 @@
     <div class="col-3">Name</div>
     <div class="col-3">PhoneNumber</div>
     <div class="col-3">City</div>
-   @* <div class="col-3">Country</div>*@
+    <div class="col-3">Language</div>
 </div>
 
 @foreach (Person person in Model)
@@ -27,3 +27,5 @@
  <br/>
  <a asp-action="Index" asp-controller="Country">Country</a>
 <a asp-action="Index" asp-controller="City">City</a>
+<button class="btn btn-secondary" onclick="getAjaxPeopleList('@Url.Action("Search","Language")')">Get language in a list</button>
+

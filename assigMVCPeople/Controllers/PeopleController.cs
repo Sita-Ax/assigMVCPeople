@@ -10,8 +10,8 @@ namespace assigMVCPeople.Controllers
 {
     public class PeopleController : Controller
     {
-        IPeopleService _peopleService;
-        readonly ICityService _cityService;
+       IPeopleService _peopleService;
+       private readonly ICityService _cityService;
         public PeopleController(IPeopleService peopleService, ICityService cityService)
         {
             _peopleService = peopleService;
@@ -29,7 +29,6 @@ namespace assigMVCPeople.Controllers
         public IActionResult Create()
         {
             CreatePersonViewModel createPersonViewModel = new CreatePersonViewModel();
-            createPersonViewModel.Cities = _cityService.GetAll();
             return View(createPersonViewModel);
         }
 
@@ -40,15 +39,7 @@ namespace assigMVCPeople.Controllers
         {
             if (ModelState.IsValid)
             {
-                //try
-                //{
-                    _peopleService.Create(createPerson);
-                //}
-                //catch (ArgumentException ex)
-                //{
-                //    ModelState.AddModelError("Name, PhoneNumber & City", ex.Message);
-                //    return View(createPerson);
-                //}
+                _peopleService.Create(createPerson);
                 return RedirectToAction(nameof(Index));
             }
             return View(createPerson);

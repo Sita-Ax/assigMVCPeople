@@ -7,7 +7,7 @@ namespace assigMVCPeople.Controllers
 {
     public class LanguageController : Controller
     {
-        ILanguageService _languageService;
+        private readonly ILanguageService _languageService;
         public LanguageController(ILanguageService languageService)
         {
             _languageService = languageService;
@@ -20,9 +20,9 @@ namespace assigMVCPeople.Controllers
         public IActionResult Create()
         {
             CreateLanguageViewModel createLanguageView = new CreateLanguageViewModel();
-
             return View(createLanguageView);
         }
+
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public IActionResult Create(CreateLanguageViewModel createLanguage)
@@ -43,6 +43,8 @@ namespace assigMVCPeople.Controllers
             }
             return View(language);
         }
+
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             Language language = _languageService.FindById(id);
@@ -57,6 +59,7 @@ namespace assigMVCPeople.Controllers
             };
             return View(editLanguage);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, CreateLanguageViewModel editLanguage)
@@ -86,16 +89,16 @@ namespace assigMVCPeople.Controllers
             return View(new LanguageViewModel());
         }
 
-        [HttpPost]
-        public IActionResult Search(string search)
-        {
-            List<Language> languages = _languageService.Search(search);
-            if (search != null)
-            {
-                return PartialView("_LanguageList", languages);
-            }
-            return BadRequest();
-        }
+        //[HttpPost]
+        //public IActionResult Search(string search)
+        //{
+        //    List<Language> languages = _languageService.Search(search);
+        //    if (search != null)
+        //    {
+        //        return PartialView("_LanguageList", languages);
+        //    }
+        //    return BadRequest();
+        //}
     }
 }
 
