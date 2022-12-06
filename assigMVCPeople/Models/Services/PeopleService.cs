@@ -31,22 +31,32 @@ namespace assigMVCPeople.Models.Services
             {
                 throw new ArgumentException("City is empty, plizz choose your city.");
             }
-            var language = _languageRepo.Read(createPerson.LanguageId);
-            if (language == null)
+
+            List<Language> languages = new List<Language>();
+            foreach(int languageId in createPerson.LanguagesId)
             {
-                throw new ArgumentException("Language is empty, can´t you speak?");
+                Language language = _languageRepo.Read(languageId);
+
+                if (language == null) throw new ArgumentException("language is not existed");
+
+                languages.Add(language);
             }
-            List<Language> languages = _languageRepo.Read();
-            foreach (Language languagess in languages ?? new List<Language>())
-            {
-                Language l = _languageRepo.Read(createPerson.LanguageId);
-            }
+            //var language = _languageRepo.Read(createPerson.LanguageId);
+            //if (language == null)
+            //{
+            //    throw new ArgumentException("Language is empty, can´t you speak?");
+            //}
+            //List<Language> languages = _languageRepo.Read();
+            //foreach (Language languagess in languages.Where(p => p.People).Select(y => y.Value).ToList())
+            //{
+            //    Language l = _languageRepo.Read(createPerson.LanguageId);
+            //}
             Person person = new Person()
             {
                 Name = createPerson.Name,
                 PhoneNumber = createPerson.PhoneNumber,
                 City = city,
-                Languages = languages,
+                Languages = languages
             };
             return _peopleRepo.Create(person);
         }

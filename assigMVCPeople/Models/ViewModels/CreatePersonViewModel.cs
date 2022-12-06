@@ -16,7 +16,7 @@ namespace assigMVCPeople.Models.ViewModels
         public int CityId { get; set; }
         [Display(Name = "Language")]
         [Required]
-        public int LanguageId { get; set; } 
+        public int[]? LanguagesId { get; set; } 
 
         public List<City>? Cities { get; set; }
 
