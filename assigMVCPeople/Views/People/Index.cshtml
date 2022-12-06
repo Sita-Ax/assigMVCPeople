@@ -7,14 +7,14 @@
 
 <a class="btn btn-primary" id="create-btn" style="height:auto;" asp-action="Create">Add a person to the list</a>
 <br />
-<a asp-action="Search">Search</a>
+
 
 <br />
 <div class="row">
     <div class="col-3">Name</div>
     <div class="col-3">PhoneNumber</div>
     <div class="col-3">City</div>
-    <div class="col-3">Language</div>
+    <div class="col-3"></div>
 </div>
 
 @foreach (Person person in Model)
@@ -25,7 +25,6 @@
     }
  }
  <br/>
- <a asp-action="Index" asp-controller="Country">Country</a>
-<a asp-action="Index" asp-controller="City">City</a>
-<button class="btn btn-secondary" onclick="getAjaxPeopleList('@Url.Action("Search","Language")')">Get language in a list</button>
+
+<a asp-action="Search" class="btn btn-secondary">Serach</a>
 

@@ -21,6 +21,7 @@ body {
     background-color:aquamarine;
     padding: 4px 5px;
 }
+
 .input-group{
     background-color: red;
     margin: 1px;
@@ -28,19 +29,29 @@ body {
     justify-content: space-between;
 }
 
+.go-btn {
+    font-display: inherit;
+    color: dimgray;
+}
+
+.card {
+    background-image: linear-gradient(to right, rgb(0, 255, 191), rgb(0, 174, 255));
+}
 
 .form-control{
     background-color: yellow;
 }
+
 #search-addon {
     background-color: aqua;
 }
+
 .btn btn-primary {
     justify-content: space-around;
     border-radius: 5px;
 }
+
 .btn btn-secondary {
     border-bottom: 2px solid black;
     justify-content: space-around;
-
 }

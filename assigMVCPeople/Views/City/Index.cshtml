@@ -3,12 +3,10 @@
 @{
     ViewData["Title"] = "Index";
 }
+<ul class="nav nav-tabs">
+    <a asp-action="Create" class="go-btn">Create New City</a>
+</ul>
 
-<h1>List City</h1>
-
-<p>
-    <a asp-action="Create">Create New City</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -39,4 +37,4 @@
 }
     </tbody>
 </table>
-<a asp-action="Index" asp-controller="People">Create a person</a>
+<a asp-action="Index" asp-controller="Language">Create a language</a>

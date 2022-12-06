@@ -1,10 +1,16 @@
 ﻿@model Person
 
-<h2>People details</h2>
+<h2>Person details</h2>
 <div class="row">
     <div class="col-3">@Model.Name</div>
     <div class="col-3">@Model.PhoneNumber</div>
-    <div class="col-3">@Model.City</div>
-    <div class="col-3">@Model.Id</div>
+    <div class="col-3">@Model.City.CityName</div>
+    <div class="col-3">
+        @foreach (Language lang in Model.Languages)
+        {
+            <dd>@lang.LanguageName</dd>
+        }
+    </div>
     <a asp-action="Index">Go back to people list</a>
 </div>
+@*@model.city.country.countryname*@

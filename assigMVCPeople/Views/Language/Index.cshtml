@@ -3,13 +3,9 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<h1>Language List</h1>
-
-<p>
-    <a asp-action="Create">Create New Language</a>
-</p>
+<ul class="nav nav-tabs">
+    <a asp-action="Create" class="go-btn">Create New Language</a>
+</ul>
 <table class="table">
     <thead>
         <tr>
@@ -35,4 +31,4 @@
         }
     </tbody>
 </table>
-<a asp-action="Index" asp-controller="City">Create a city</a>
+<a asp-action="Index" asp-controller="People">Create a person</a>

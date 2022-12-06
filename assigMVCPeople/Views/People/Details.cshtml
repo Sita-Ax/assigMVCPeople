@@ -4,7 +4,9 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="card">
+    <h1 class="card-header text-center">Details of the Person</h1>
+    <hr />
 <dl>
     <dt>Name</dt>
     <dd>@Model.Name</dd>
@@ -19,10 +21,8 @@
     {
         <dd>@lang.LanguageName</dd>
     }
-    
-
 </dl>
-
+</div>
 <a asp-action="Index" class="btn btn-dark">Back to the list of people</a>
 <br />
 <a class="btn btn-primary mt-5" asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>

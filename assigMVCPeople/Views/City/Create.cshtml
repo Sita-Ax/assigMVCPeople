@@ -3,9 +3,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Create a City</h1>
 
-<h4>CreateCityViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -21,19 +20,22 @@
                 <input asp-for="ZipCode" class="form-control" />
                 <span asp-validation-for="ZipCode" class="text-danger"></span>
             </div>
-            <select asp-for="CountryId">
+            <br/>
+            <label asp-for="Countries" class="control-label">Choose a Country</label>
+            <select asp-for="CountryId" class="form-control">
                 @foreach (Country country in Model.Countries)
                 {
                     <option value="@country.CountryId">@country.CountryName</option>
                 }
             </select>
+            <br/>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-outline-dark" />
             </div>
         </form>
     </div>
 </div>
-
+<br/>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="go-btn">Back to list of Cities</a>
 </div>

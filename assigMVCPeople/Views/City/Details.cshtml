@@ -4,35 +4,32 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>City</h4>
+<div class="card">
+    <h1 class="card-header text-center">Details of the city</h1>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-4">
             @Html.DisplayNameFor(model => model.CityName)
         </dt>
         <dd class="col-sm-12">
             @Html.DisplayFor(model => model.CityName)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-4">
             @Html.DisplayNameFor(model => model.ZipCode)
         </dt>
         <dd class="col-sm-12">
             @Html.DisplayFor(model => model.ZipCode)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-4">
             @Html.DisplayNameFor(model => model.Country)
         </dt>
         <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Country.CountryName)
         </dd>
-
     </dl>
 </div>
 <div>
    @* <a asp-action="Edit" asp-route-id="@Model?.CountryId">Edit</a> |*@
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="go-btn">Go back</a>
 </div>
 

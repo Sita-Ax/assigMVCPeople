@@ -118,10 +118,10 @@ namespace assigMVCPeople.Controllers
         [HttpPost]
         public IActionResult Search(string search)
         {
-            List<Person> persons = _peopleService.Search(search);
+            List<Person> people = _peopleService.Search(search);
             if(search != null)
             {
-                return PartialView("_PeopleList", persons);
+                return PartialView("_PeopleList", people);
             }
             return BadRequest();
         }
