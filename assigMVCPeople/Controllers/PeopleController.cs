@@ -12,11 +12,15 @@ namespace assigMVCPeople.Controllers
     {
        IPeopleService _peopleService;
        private readonly ICityService _cityService;
-        public PeopleController(IPeopleService peopleService, ICityService cityService)
+        private readonly ILanguageService _languageService;
+
+        public PeopleController(IPeopleService peopleService, ICityService cityService, ILanguageService languageService)
         {
             _peopleService = peopleService;
             _cityService = cityService;
+            _languageService = languageService;
         }
+
 
         // GET: PeopleController
         public IActionResult Index()
@@ -29,6 +33,8 @@ namespace assigMVCPeople.Controllers
         public IActionResult Create()
         {
             CreatePersonViewModel createPersonViewModel = new CreatePersonViewModel();
+            createPersonViewModel.Cities = _cityService.GetAll();
+            createPersonViewModel.Languages = _languageService.GetAll();
             return View(createPersonViewModel);
         }
 

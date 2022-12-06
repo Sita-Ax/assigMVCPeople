@@ -13,7 +13,14 @@
     <dd>@Model.PhoneNumber</dd>
 
     <dt>City</dt>
-    <dd>@Model.City</dd>
+    <dd>@Model.City.CityName</dd>
+    <dt>Languages</dt>
+    @foreach(Language lang in Model.Languages)
+    {
+        <dd>@lang.LanguageName</dd>
+    }
+    
+
 </dl>
 
 <a asp-action="Index" class="btn btn-dark">Back to the list of people</a>

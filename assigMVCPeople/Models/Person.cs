@@ -25,8 +25,6 @@ namespace assigMVCPeople.Models
        // [ForeignKey(nameof(City))]
         public int CityId { get; set; }
         public City? City { get; set; }
-        public int LanguageId { get; set; }
-        public Language? Language { get; set; }
         public List<Language>? Languages { get; set; }
         
     }

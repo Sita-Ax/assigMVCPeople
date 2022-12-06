@@ -21,7 +21,7 @@ namespace assigMVCPeople.Models.Repos
 
         public List<Language> Read()
         {
-            return _peopleDbContext.Languages!.Include(language => language.LanguageId).ToList();
+            return _peopleDbContext.Languages!.Include(language => language.People).ToList();
         }
 
         public Language Read(int id)
