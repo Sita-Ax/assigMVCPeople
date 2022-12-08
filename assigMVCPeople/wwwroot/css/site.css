@@ -55,3 +55,7 @@ body {
     border-bottom: 2px solid black;
     justify-content: space-around;
 }
+.list-group {
+    background-color: palevioletred;
+
+}

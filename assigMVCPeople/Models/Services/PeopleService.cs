@@ -79,6 +79,8 @@ namespace assigMVCPeople.Models.Services
             {
                 person.Name = editPerson.Name;
                 person.PhoneNumber = editPerson.PhoneNumber;
+                person.CityId = editPerson.CityId;
+                person.Languages = editPerson.Languages;
             }
             return _peopleRepo.Update(person);
         }

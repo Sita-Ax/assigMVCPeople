@@ -75,6 +75,7 @@ namespace assigMVCPeople.Controllers
                 Name = person.Name,
                 PhoneNumber = person.PhoneNumber,
                 CityId = person.Id,
+                Languages = person.Languages,
             };
             return View(editPerson);
         }
