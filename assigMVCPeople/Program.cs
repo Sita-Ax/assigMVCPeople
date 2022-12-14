@@ -1,7 +1,9 @@
 using assigMVCPeople.Models.DB;
 using assigMVCPeople.Models.Repos;
 using assigMVCPeople.Models.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,10 @@ builder.Services.AddScoped<IPeopleService, PeopleService>();
 
 builder.Services.AddScoped<ICountryRepo, DbCountryRepo>();
 builder.Services.AddScoped<ICountryService, CountryService>();
+
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+    .AddEntityFrameworkStores<PeopleDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<ICityRepo, DbCityRepo>();
 builder.Services.AddScoped<ICityService, CityService>();
@@ -39,11 +45,16 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
+app.UseEndpoints(endpoints =>
+{
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 app.Run();
+
