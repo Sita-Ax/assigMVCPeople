@@ -1,3 +1,4 @@
+using assigMVCPeople.Models;
 using assigMVCPeople.Models.DB;
 using assigMVCPeople.Models.Repos;
 using assigMVCPeople.Models.Services;
