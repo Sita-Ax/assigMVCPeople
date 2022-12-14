@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<PeopleDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddScoped<IPeopleRepo, DbPeopleRepo>();
 builder.Services.AddScoped<IPeopleService, PeopleService>();
 
@@ -19,6 +20,7 @@ builder.Services.AddScoped<ICityService, CityService>();
 
 builder.Services.AddScoped<ILanguageRepo, DbLanguageRepo>();
 builder.Services.AddScoped<ILanguageService, LanguageService>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddMvc();

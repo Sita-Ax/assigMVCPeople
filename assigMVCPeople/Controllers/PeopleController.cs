@@ -10,8 +10,8 @@ namespace assigMVCPeople.Controllers
 {
     public class PeopleController : Controller
     {
-       IPeopleService _peopleService;
-       private readonly ICityService _cityService;
+        IPeopleService _peopleService;
+        private readonly ICityService _cityService;
         private readonly ILanguageService _languageService;
 
         public PeopleController(IPeopleService peopleService, ICityService cityService, ILanguageService languageService)
