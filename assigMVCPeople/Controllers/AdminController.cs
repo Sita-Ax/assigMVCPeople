@@ -1,4 +1,5 @@
 ﻿using assigMVCPeople.Models;
+using assigMVCPeople.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -53,14 +54,14 @@ namespace assigMVCPeople.Controllers
             {
                 return RedirectToAction("Index");
             }
-            ManageRolesViewModel manageRoles = new ManageRolesViewModel();
+            ManageRolesViewModel manageRoles = new Models.ViewModels.ManageRolesViewModel();
             manageRoles.Role = role;
             manageRoles.UsersWithRole = await _userManager.GetUsersInRoleAsync(role.Name);
             manageRoles.UsersNoRole = _userManager.Users.ToList();
 
-            foreach (var item in manageRoles.UserWithRole)
+            foreach (var item in manageRoles.UsersWithRole)
             {
-                manageRoles.UserNoRole.Remove(item);
+                manageRoles.UsersNoRole.Remove(item);
             }
             ViewBag.Msg = msg;
             return View(manageRoles);
