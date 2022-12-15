@@ -17,7 +17,8 @@ namespace assigMVCPeople.Models.ViewModels
 
         [Required]
         [Display(Name = "Date of Brith")]
-        [StringLength(120, MinimumLength = 2)]
+        //[StringLength(120, MinimumLength = 2)]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
         [Required]

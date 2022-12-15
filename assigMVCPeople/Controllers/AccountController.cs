@@ -69,17 +69,17 @@ namespace assigMVCPeople.Controllers
                 SignInResult signIn = await _signInManager.PasswordSignInAsync(login.UserName, login.Password, login.RememberMe, false);
                 if (signIn.IsNotAllowed)
                 {
-                    throw new Exception();
+                    throw new Exception("This is not allowed.");
                 }
                 if (signIn.IsLockedOut) 
                 { 
-                    throw new Exception(); 
+                    throw new Exception("You are locked out."); 
                 }
                 if (signIn.Succeeded) 
                 { 
                     return RedirectToAction("Index", "Home"); 
                 }
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                ModelState.AddModelError(string.Empty, "Invalid Login Attempt.");
             }
             return View();
         }
@@ -89,6 +89,11 @@ namespace assigMVCPeople.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
