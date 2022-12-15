@@ -12,15 +12,43 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<PeopleDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+    .AddEntityFrameworkStores<PeopleDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    //Password settings
+    options.Password.RequireDigit = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 1;
+    ////Lockout
+    //options.Lockout.AllowedForNewUsers = true;
+    //options.Lockout.MaxFailedAccessAttempts = 5;
+    //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    ////User settings
+    //options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+    //options.User.RequireUniqueEmail = false;
+});
+
+//builder.Services.ConfigureApplicationCookie(options =>
+//{
+//    //Cookie settings
+//    options.Cookie.HttpOnly = true;
+//    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+//    options.LoginPath = "/Identity/Account/Login";
+//    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+//    options.SlidingExpiration = true;
+//});
+
 builder.Services.AddScoped<IPeopleRepo, DbPeopleRepo>();
 builder.Services.AddScoped<IPeopleService, PeopleService>();
 
 builder.Services.AddScoped<ICountryRepo, DbCountryRepo>();
 builder.Services.AddScoped<ICountryService, CountryService>();
-
-builder.Services.AddIdentity<AppUser, IdentityRole>()
-    .AddEntityFrameworkStores<PeopleDbContext>()
-    .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<ICityRepo, DbCityRepo>();
 builder.Services.AddScoped<ICityService, CityService>();

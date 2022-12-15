@@ -40,7 +40,7 @@ namespace assigMVCPeople.Models.ViewModels
         [Required]
         [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
-        [Compare("Password")]
+        [Compare("Password", ErrorMessage = "Password and confirmation password not match")]
         public string? ConfirmPassword { get; set; }
     }
 }
