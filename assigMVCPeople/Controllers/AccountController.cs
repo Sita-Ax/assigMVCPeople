@@ -49,7 +49,6 @@ namespace assigMVCPeople.Controllers
                 {
                     ModelState.AddModelError(identityError.Code, identityError.Description);
                 }
-                //var user = await _userManager.FindByNameAsync(registerUser.UserName);
             }
             return View(registerUser);
         }
@@ -84,6 +83,7 @@ namespace assigMVCPeople.Controllers
             }
             return View();
         }
+
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
