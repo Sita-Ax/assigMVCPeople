@@ -65,18 +65,22 @@ namespace assigMVCPeople.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel login)
         {
-            SignInResult signIn = await _signInManager.PasswordSignInAsync();
-            if (signIn.IsNotAllowed)
+            if (ModelState.IsValid)
             {
-                throw new Exception();
-            }
-            if (signIn.IsLockedOut) 
-            { 
-                throw new Exception(); 
-            }
-            if (signIn.Succeeded) 
-            { 
-                return RedirectToAction("Index", "Home"); 
+                SignInResult signIn = await _signInManager.PasswordSignInAsync(login.UserName, login.Password, login.RememberMe, false);
+                if (signIn.IsNotAllowed)
+                {
+                    throw new Exception();
+                }
+                if (signIn.IsLockedOut) 
+                { 
+                    throw new Exception(); 
+                }
+                if (signIn.Succeeded) 
+                { 
+                    return RedirectToAction("Index", "Home"); 
+                }
+                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
             }
             return View();
         }
@@ -84,7 +88,7 @@ namespace assigMVCPeople.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
     }
 }
