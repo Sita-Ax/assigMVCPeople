@@ -15,7 +15,6 @@ namespace assigMVCPeople.Models.ViewModels
         [StringLength(120, MinimumLength = 2)]
         public string? LastName { get; set; }
 
-        [Required]
         [Display(Name = "Date of Brith")]
         //[StringLength(120, MinimumLength = 2)]
         [DataType(DataType.Date)]
