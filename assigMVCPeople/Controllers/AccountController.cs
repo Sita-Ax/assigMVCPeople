@@ -36,9 +36,9 @@ namespace assigMVCPeople.Controllers
                 {
                     FirstName = registerUser.FirstName,
                     LastName = registerUser.LastName,
-                    Email = registerUser.Email,
                     DateOfBirth = registerUser.DateOfBirth,
                     UserName = registerUser.UserName,
+                    Email = registerUser.Email,
                 };
                 IdentityResult result = await _userManager.CreateAsync(user, registerUser.Password);
                 if (result.Succeeded)
@@ -64,9 +64,9 @@ namespace assigMVCPeople.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel login)
         {
-            if (ModelState.IsValid)
-            {
-                SignInResult signIn = await _signInManager.PasswordSignInAsync(login.UserName, login.Password, login.RememberMe, false);
+            //if (ModelState.IsValid)
+            //{
+            SignInResult signIn = await _signInManager.PasswordSignInAsync(login.UserName, login.Password, login.RememberMe, true);
                 if (signIn.IsNotAllowed)
                 {
                     throw new Exception("This is not allowed.");
@@ -80,7 +80,7 @@ namespace assigMVCPeople.Controllers
                     return RedirectToAction("Index", "Home"); 
                 }
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt.");
-            }
+           // }
             return View();
         }
 

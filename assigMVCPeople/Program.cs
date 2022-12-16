@@ -8,13 +8,16 @@ using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-builder.Services.AddDbContext<PeopleDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+builder.Services.AddMvc();
 
 builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<PeopleDbContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.AddDbContext<PeopleDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -55,10 +58,6 @@ builder.Services.AddScoped<ICityService, CityService>();
 
 builder.Services.AddScoped<ILanguageRepo, DbLanguageRepo>();
 builder.Services.AddScoped<ILanguageService, LanguageService>();
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-builder.Services.AddMvc();
 
 var app = builder.Build();
 
